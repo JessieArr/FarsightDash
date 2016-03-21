@@ -17,14 +17,32 @@ namespace FarsightDash.Controls
         public CreateControlWindow()
         {
             InitializeComponent();
+
+            ControlSelector.ItemsSource = new List<string>
+            {
+                ControlNameStrings.DirectoryWatcher,
+                ControlNameStrings.FileTail
+            };
         }
 
         private void OKButtonClicked(object sender, RoutedEventArgs e)
         {
             var newControl = new LayoutAnchorable();
-            var newControlContent = new DirectoryWatcher(SelectedPath);
-            newControl.Content = newControlContent;
-            newControl.Title = "New Control";
+
+            var selectedItem = ControlSelector.SelectedItem;
+            if (selectedItem == ControlNameStrings.DirectoryWatcher)
+            {
+                var newControlContent = new DirectoryWatcher(SelectedPath);
+                newControl.Content = newControlContent;
+            }
+
+            if (selectedItem == ControlNameStrings.FileTail)
+            {
+                var newControlContent = new FileTail(SelectedPath);
+                newControl.Content = newControlContent;
+            }
+
+            newControl.Title = ControlName.Text;
             DockHelper.RootAnchorablePane.Children.Add(newControl);
 
             var parentWindow = (Window)Parent;
@@ -33,11 +51,21 @@ namespace FarsightDash.Controls
 
         private void SelectTargetClicked(object sender, RoutedEventArgs e)
         {
-            //var selectedItem = (ComboBoxItem)ControlSelector.SelectedItem;
+            var selectedItem = ControlSelector.SelectedItem;
 
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            DialogResult result = fbd.ShowDialog();
-            SelectedPath = fbd.SelectedPath;
+            if (selectedItem == ControlNameStrings.DirectoryWatcher)
+            {
+                var fbd = new FolderBrowserDialog();
+                var result = fbd.ShowDialog();
+                SelectedPath = fbd.SelectedPath;
+            }
+
+            if (selectedItem == ControlNameStrings.FileTail)
+            {
+                var fbd = new OpenFileDialog();
+                var result = fbd.ShowDialog();
+                SelectedPath = fbd.FileName;
+            }
         }
 
         private string SelectedPath;

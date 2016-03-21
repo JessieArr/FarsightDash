@@ -45,6 +45,8 @@ namespace FarsightDash
             var popupWindow = new Window();
             var createControlWindowContent = new CreateControlWindow();
             popupWindow.Content = createControlWindowContent;
+            popupWindow.Width = 400;
+            popupWindow.Height = 400;
             popupWindow.Show();
         }
     }
