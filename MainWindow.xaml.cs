@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FarsightDash.Controls;
 
 namespace FarsightDash
 {
@@ -22,6 +23,9 @@ namespace FarsightDash
     {
         public MainWindow()
         {
+            InitializeComponent();
+            Tool1.Content = new DirectoryWatcher("Z:\\TestDirectory");
+            Tool2.Content = new FileTail("Z:\\TestDirectory\\test.log");
         }
 
         private void ExitMenuItemClicked(object sender, RoutedEventArgs e)

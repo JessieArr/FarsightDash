@@ -4,13 +4,13 @@
         xmlns:avalonDock="http://schemas.xceed.com/wpf/xaml/avalondock"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <!--<Menu>
+        <Menu>
             <MenuItem Header="File">
                 <MenuItem Header="Exit" Click="ExitMenuItemClicked" />
             </MenuItem>
-        </Menu>-->
+        </Menu>
 
-        <avalonDock:DockingManager x:Name="dockingManager">
+        <avalonDock:DockingManager x:Name="dockingManager" Margin="0,20,0,0">
             <avalonDock:LayoutRoot>
                 <avalonDock:LayoutPanel Orientation="Horizontal">
                     <avalonDock:LayoutDocumentPaneGroup>
@@ -30,10 +30,10 @@
                     </avalonDock:LayoutDocumentPaneGroup>
                     <avalonDock:LayoutAnchorablePaneGroup DockWidth="150" Orientation="Vertical">
                         <avalonDock:LayoutAnchorablePane>
-                            <avalonDock:LayoutAnchorable Title="Tool 1">
+                            <avalonDock:LayoutAnchorable Title="Tool 1" x:Name="Tool1" >
                                 <TextBox/>
                             </avalonDock:LayoutAnchorable>
-                            <avalonDock:LayoutAnchorable Title="Tool 2">
+                            <avalonDock:LayoutAnchorable Title="Tool 2" x:Name="Tool2">
                                 <TextBox/>
                             </avalonDock:LayoutAnchorable>
                         </avalonDock:LayoutAnchorablePane>
