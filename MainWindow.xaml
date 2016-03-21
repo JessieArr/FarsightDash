@@ -8,10 +8,13 @@
             <MenuItem Header="File">
                 <MenuItem Header="Exit" Click="ExitMenuItemClicked" />
             </MenuItem>
+            <MenuItem Header="Controls">
+                <MenuItem Header="CreateControl" Click="CreateControlClicked" />
+            </MenuItem>
         </Menu>
 
         <avalonDock:DockingManager x:Name="dockingManager" Margin="0,20,0,0">
-            <avalonDock:LayoutRoot>
+            <avalonDock:LayoutRoot x:Name="LayoutRoot">
                 <avalonDock:LayoutPanel Orientation="Horizontal">
                     <avalonDock:LayoutDocumentPaneGroup>
                         <avalonDock:LayoutDocumentPane>
@@ -29,7 +32,7 @@
                         </avalonDock:LayoutDocumentPane>
                     </avalonDock:LayoutDocumentPaneGroup>
                     <avalonDock:LayoutAnchorablePaneGroup DockWidth="150" Orientation="Vertical">
-                        <avalonDock:LayoutAnchorablePane>
+                        <avalonDock:LayoutAnchorablePane x:Name="AnchorablePane">
                             <avalonDock:LayoutAnchorable Title="Tool 1" x:Name="Tool1" >
                                 <TextBox/>
                             </avalonDock:LayoutAnchorable>
