@@ -16,37 +16,8 @@
         <avalonDock:DockingManager x:Name="dockingManager" Margin="0,20,0,0">
             <avalonDock:LayoutRoot x:Name="LayoutRoot">
                 <avalonDock:LayoutPanel Orientation="Horizontal">
-                    <avalonDock:LayoutDocumentPaneGroup>
-                        <avalonDock:LayoutDocumentPane>
-                            <avalonDock:LayoutDocument Title="Doc1">
-                                <TextBox/>
-                            </avalonDock:LayoutDocument>
-                            <avalonDock:LayoutDocument Title="Doc2">
-                                <TextBox/>
-                            </avalonDock:LayoutDocument>
-                        </avalonDock:LayoutDocumentPane>
-                        <avalonDock:LayoutDocumentPane>
-                            <avalonDock:LayoutDocument Title="Doc3">
-                                <TextBox/>
-                            </avalonDock:LayoutDocument>
-                        </avalonDock:LayoutDocumentPane>
-                    </avalonDock:LayoutDocumentPaneGroup>
                     <avalonDock:LayoutAnchorablePaneGroup DockWidth="150" Orientation="Vertical">
                         <avalonDock:LayoutAnchorablePane x:Name="AnchorablePane">
-                            <avalonDock:LayoutAnchorable Title="Tool 1" x:Name="Tool1" >
-                                <TextBox/>
-                            </avalonDock:LayoutAnchorable>
-                            <avalonDock:LayoutAnchorable Title="Tool 2" x:Name="Tool2">
-                                <TextBox/>
-                            </avalonDock:LayoutAnchorable>
-                        </avalonDock:LayoutAnchorablePane>
-                        <avalonDock:LayoutAnchorablePane>
-                            <avalonDock:LayoutAnchorable Title="Tool 3">
-                                <TextBox/>
-                            </avalonDock:LayoutAnchorable>
-                            <avalonDock:LayoutAnchorable Title="Tool 4">
-                                <TextBox/>
-                            </avalonDock:LayoutAnchorable>
                         </avalonDock:LayoutAnchorablePane>
                     </avalonDock:LayoutAnchorablePaneGroup>
                 </avalonDock:LayoutPanel>
@@ -61,9 +32,5 @@
                 </avalonDock:LayoutRoot.LeftSide>
             </avalonDock:LayoutRoot>
         </avalonDock:DockingManager>
-
-        <!--<StatusBar Grid.Row="2">
-            <StatusBarItem Content="AvalonDock 1.3 Sample Project"/>
-        </StatusBar>-->
     </Grid>
 </Window>

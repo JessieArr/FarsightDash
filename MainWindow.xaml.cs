@@ -27,12 +27,6 @@ namespace FarsightDash
         {
             InitializeComponent();
             DockHelper.RootAnchorablePane = AnchorablePane;
-            Tool1.Content = new DirectoryWatcher("Z:\\TestDirectory");
-            Tool2.Content = new FileTail("Z:\\TestDirectory\\test.log");
-
-            //var anchorable = new LayoutAnchorable();
-            //anchorable.Content = new FileTail("Z:\\TestDirectory\\test.log");
-            //AnchorablePane.Children.Add(anchorable);
         }
 
         private void ExitMenuItemClicked(object sender, RoutedEventArgs e)

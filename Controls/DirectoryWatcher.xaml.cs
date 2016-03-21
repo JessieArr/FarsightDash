@@ -32,12 +32,10 @@ namespace FarsightDash.Controls
 
             _Watcher = new FileSystemWatcher();
             _Watcher.Path = directoryToWatch;
-            /* Watch for changes in LastAccess and LastWrite times, and
-               the renaming of files or directories. */
+
             _Watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite
                | NotifyFilters.FileName | NotifyFilters.DirectoryName;
-            // Only watch text files.
-            _Watcher.Filter = "*.txt";
+
             _Watcher.EnableRaisingEvents = true;
 
             _Watcher.Changed += ChangeEventHandler;
