@@ -7,7 +7,7 @@ using FarsightDash.FarsightComponents;
 
 namespace FarsightDash.Transforms
 {
-    public class GetTimeFromDateTime : ITransform
+    public class GetDateFromDateTime : ITransform
     {
         public EmitDataHandler DataHandler
         {
@@ -16,13 +16,12 @@ namespace FarsightDash.Transforms
                 return (sender, args) =>
                 {
                     var dateTime = DateTime.Parse(args.Data);
-                    EmitData(this, new EmitDataHandlerArgs(dateTime.TimeOfDay.ToString()));
+                    EmitData(this, new EmitDataHandlerArgs(dateTime.Date.ToString("MM/dd/yyyy")));
                 };
             }
         }
 
         public event EmitDataHandler EmitData;
-
         public void Initialize()
         {
         }

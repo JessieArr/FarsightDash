@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using FarsightDash.FarsightComponents;
+using FarsightDash.FarsightComponents.Models;
+using Newtonsoft.Json;
 
 namespace FarsightDash.Transforms
 {
-    public class GetTimeFromDateTime : ITransform
+    public class GetURLAndResultFromWebResponse : ITransform
     {
         public EmitDataHandler DataHandler
         {
@@ -15,14 +18,14 @@ namespace FarsightDash.Transforms
             {
                 return (sender, args) =>
                 {
-                    var dateTime = DateTime.Parse(args.Data);
-                    EmitData(this, new EmitDataHandlerArgs(dateTime.TimeOfDay.ToString()));
+                    var response = JsonConvert.DeserializeObject<FarsightWebResponse>(args.Data);
+                    var resultString = response.ResponseUri + " - " + response.StatusCode;
+                    EmitData(this, new EmitDataHandlerArgs(resultString));
                 };
             }
         }
 
         public event EmitDataHandler EmitData;
-
         public void Initialize()
         {
         }

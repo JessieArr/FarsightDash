@@ -22,7 +22,9 @@ namespace FarsightDash.Controls
             {
                 ControlNameStrings.DirectoryWatcher,
                 ControlNameStrings.FileTail,
-                ControlNameStrings.Clock
+                ControlNameStrings.Clock,
+                ControlNameStrings.Date,
+                ControlNameStrings.HTTPStatusMonitor
             };
         }
 
@@ -46,6 +48,18 @@ namespace FarsightDash.Controls
             if ((string)selectedItem == ControlNameStrings.Clock)
             {
                 var newControlContent = new Clock();
+                newControl.Content = newControlContent;
+            }
+
+            if ((string)selectedItem == ControlNameStrings.Date)
+            {
+                var newControlContent = new Date();
+                newControl.Content = newControlContent;
+            }
+
+            if ((string)selectedItem == ControlNameStrings.HTTPStatusMonitor)
+            {
+                var newControlContent = new HTTPStatusMonitor(ControlName.Text, 1);
                 newControl.Content = newControlContent;
             }
 

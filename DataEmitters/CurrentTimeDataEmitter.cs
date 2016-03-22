@@ -7,6 +7,10 @@ namespace FarsightDash.DataEmitters
     public class CurrentTimeDataEmitter : IDataEmitter
     {
         public event EmitDataHandler EmitData;
+        public void Initialize()
+        {
+            EmitData(this, new EmitDataHandlerArgs(DateTime.Now.ToString()));
+        }
 
         private int _IntervalInSeconds;
         private const int _MillisecondsPerSecond = 1000;

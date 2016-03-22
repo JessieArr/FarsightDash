@@ -38,6 +38,10 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Forms" />
@@ -86,13 +90,23 @@
     <Compile Include="Controls\Clock.xaml.cs">
       <DependentUpon>Clock.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Date.xaml.cs">
+      <DependentUpon>Date.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\HTTPStatusMonitor.xaml.cs">
+      <DependentUpon>HTTPStatusMonitor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataEmitters\HTTPGetPoller.cs" />
     <Compile Include="FarsightComponents\EmitDataHandler.cs" />
     <Compile Include="FarsightComponents\EmitDataHandlerArgs.cs" />
     <Compile Include="FarsightComponents\IDataConsumer.cs" />
     <Compile Include="FarsightComponents\IDataEmitter.cs" />
     <Compile Include="FarsightComponents\IEmitDataHandlerArgs.cs" />
     <Compile Include="FarsightComponents\ITransform.cs" />
+    <Compile Include="FarsightComponents\Models\FarsightWebResponse.cs" />
+    <Compile Include="Transforms\GetDateFromDateTime.cs" />
     <Compile Include="Transforms\GetTimeFromDateTime.cs" />
+    <Compile Include="Transforms\GetURLAndResultFromWebResponse.cs" />
     <Compile Include="Views\LabelView.xaml.cs">
       <DependentUpon>LabelView.xaml</DependentUpon>
     </Compile>
@@ -104,11 +118,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Date.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\FileTail.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\DirectoryWatcher.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\HTTPStatusMonitor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

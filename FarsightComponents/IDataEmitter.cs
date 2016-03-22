@@ -3,5 +3,6 @@
     public interface IDataEmitter
     {
         event EmitDataHandler EmitData;
+        void Initialize();
     }
 }

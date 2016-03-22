@@ -20,20 +20,20 @@ using FarsightDash.Views;
 namespace FarsightDash.Controls
 {
     /// <summary>
-    /// Interaction logic for Clock.xaml
+    /// Interaction logic for HTTPStatusMonitor.xaml
     /// </summary>
-    public partial class Clock : UserControl
+    public partial class HTTPStatusMonitor : UserControl
     {
         private IDataEmitter _DataEmitter;
         private ITransform _Transform;
         private LabelView _View;
 
-        public Clock()
+        public HTTPStatusMonitor(string url, int intervalInSeconds)
         {
             InitializeComponent();
 
-            _DataEmitter = new CurrentTimeDataEmitter(1);
-            _Transform = new GetTimeFromDateTime();
+            _DataEmitter = new HTTPGetPoller(url, intervalInSeconds);
+            _Transform = new GetURLAndResultFromWebResponse();
             _View = new LabelView();
 
             _DataEmitter.EmitData += _Transform.DataHandler;
