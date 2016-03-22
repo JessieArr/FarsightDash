@@ -83,6 +83,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\Clock.xaml.cs">
+      <DependentUpon>Clock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FarsightComponents\EmitDataHandler.cs" />
+    <Compile Include="FarsightComponents\EmitDataHandlerArgs.cs" />
+    <Compile Include="FarsightComponents\IDataConsumer.cs" />
+    <Compile Include="FarsightComponents\IDataEmitter.cs" />
+    <Compile Include="FarsightComponents\IEmitDataHandlerArgs.cs" />
+    <Compile Include="FarsightComponents\ITransform.cs" />
+    <Compile Include="Transforms\GetTimeFromDateTime.cs" />
+    <Compile Include="Views\LabelView.xaml.cs">
+      <DependentUpon>LabelView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Controls\Clock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\CreateControlWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -113,11 +130,16 @@
     <Compile Include="Controls\DirectoryWatcher.xaml.cs">
       <DependentUpon>DirectoryWatcher.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataEmitters\CurrentTimeDataEmitter.cs" />
     <Compile Include="DockHelper.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\LabelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -150,6 +172,7 @@
   <ItemGroup>
     <Resource Include="FodyWeavers.xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.1.28.3\build\Fody.targets" Condition="Exists('..\packages\Fody.1.28.3\build\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -21,7 +21,8 @@ namespace FarsightDash.Controls
             ControlSelector.ItemsSource = new List<string>
             {
                 ControlNameStrings.DirectoryWatcher,
-                ControlNameStrings.FileTail
+                ControlNameStrings.FileTail,
+                ControlNameStrings.Clock
             };
         }
 
@@ -39,6 +40,12 @@ namespace FarsightDash.Controls
             if ((string)selectedItem == ControlNameStrings.FileTail)
             {
                 var newControlContent = new FileTail(SelectedPath);
+                newControl.Content = newControlContent;
+            }
+
+            if ((string)selectedItem == ControlNameStrings.Clock)
+            {
+                var newControlContent = new Clock();
                 newControl.Content = newControlContent;
             }
 

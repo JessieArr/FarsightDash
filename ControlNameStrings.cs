@@ -10,5 +10,6 @@ namespace FarsightDash
     {
         public const string DirectoryWatcher = "Directory Watcher";
         public const string FileTail = "File Tail";
+        public const string Clock = "Clock";
     }
 }
