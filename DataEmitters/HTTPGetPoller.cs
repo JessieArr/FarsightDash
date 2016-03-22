@@ -70,7 +70,6 @@ namespace FarsightDash.DataEmitters
         {
             var response = GetResponseFromURL();
             var serializedResponse = JsonConvert.SerializeObject(response);
-            var test = JsonConvert.DeserializeObject<FarsightWebResponse>(serializedResponse);
             EmitData(this, new EmitDataHandlerArgs(serializedResponse));
         }
     }

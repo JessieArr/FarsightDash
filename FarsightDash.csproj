@@ -100,6 +100,10 @@
     <Compile Include="Controls\HTTPStatusMonitor.xaml.cs">
       <DependentUpon>HTTPStatusMonitor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\RefreshImage.xaml.cs">
+      <DependentUpon>RefreshImage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataEmitters\URLImageSource.cs" />
     <Compile Include="DataEmitters\HTTPGetPoller.cs" />
     <Compile Include="FarsightComponents\EmitDataHandler.cs" />
     <Compile Include="FarsightComponents\EmitDataHandlerArgs.cs" />
@@ -113,6 +117,9 @@
     <Compile Include="Transforms\GetDateFromDateTime.cs" />
     <Compile Include="Transforms\GetTimeFromDateTime.cs" />
     <Compile Include="Transforms\GetURLAndResultFromWebResponse.cs" />
+    <Compile Include="Views\ImageView.xaml.cs">
+      <DependentUpon>ImageView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LabelView.xaml.cs">
       <DependentUpon>LabelView.xaml</DependentUpon>
     </Compile>
@@ -140,6 +147,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\RefreshImage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -164,6 +175,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\ImageView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\LabelView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

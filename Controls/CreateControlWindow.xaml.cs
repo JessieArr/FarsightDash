@@ -24,7 +24,8 @@ namespace FarsightDash.Controls
                 ControlNameStrings.FileTail,
                 ControlNameStrings.Clock,
                 ControlNameStrings.Date,
-                ControlNameStrings.HTTPStatusMonitor
+                ControlNameStrings.HTTPStatusMonitor,
+                ControlNameStrings.RefreshImage
             };
         }
 
@@ -60,6 +61,12 @@ namespace FarsightDash.Controls
             if ((string)selectedItem == ControlNameStrings.HTTPStatusMonitor)
             {
                 var newControlContent = new HTTPStatusMonitor(ControlName.Text, 10);
+                newControl.Content = newControlContent;
+            }
+
+            if ((string)selectedItem == ControlNameStrings.RefreshImage)
+            {
+                var newControlContent = new RefreshImage(ControlName.Text, 10);
                 newControl.Content = newControlContent;
             }
 

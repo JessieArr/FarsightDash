@@ -13,5 +13,6 @@ namespace FarsightDash
         public const string Clock = "Clock";
         public const string Date = "Date";
         public const string HTTPStatusMonitor = "HTTP Status Monitor";
+        public const string RefreshImage = "Refresh Image";
     }
 }
