@@ -59,7 +59,7 @@ namespace FarsightDash.Controls
 
             if ((string)selectedItem == ControlNameStrings.HTTPStatusMonitor)
             {
-                var newControlContent = new HTTPStatusMonitor(ControlName.Text, 1);
+                var newControlContent = new HTTPStatusMonitor(ControlName.Text, 10);
                 newControl.Content = newControlContent;
             }
 
