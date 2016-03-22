@@ -42,8 +42,17 @@ namespace FarsightDash.DataEmitters
         private byte[] GetBitmapFromURL()
         {
             var webClient = new WebClient();
-            byte[] imageBytes = webClient.DownloadData(_URL);
-            return imageBytes;
+            webClient.UseDefaultCredentials = true;
+            try
+            {
+                byte[] imageBytes = webClient.DownloadData(_URL);
+                return imageBytes;
+            }
+            catch (Exception ex)
+            {
+                FarsightLogger.DefaultLogger.LogError(ex.Message);
+                return null;
+            }
         }
 
         public void Initialize()

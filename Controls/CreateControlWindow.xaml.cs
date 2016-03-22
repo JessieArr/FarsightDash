@@ -25,7 +25,8 @@ namespace FarsightDash.Controls
                 ControlNameStrings.Clock,
                 ControlNameStrings.Date,
                 ControlNameStrings.HTTPStatusMonitor,
-                ControlNameStrings.RefreshImage
+                ControlNameStrings.RefreshImage,
+                ControlNameStrings.ChromiumBrowser
             };
         }
 
@@ -67,6 +68,12 @@ namespace FarsightDash.Controls
             if ((string)selectedItem == ControlNameStrings.RefreshImage)
             {
                 var newControlContent = new RefreshImage(ControlName.Text, 10);
+                newControl.Content = newControlContent;
+            }
+
+            if ((string)selectedItem == ControlNameStrings.ChromiumBrowser)
+            {
+                var newControlContent = new ChromiumBrowserPane(ControlName.Text);
                 newControl.Content = newControlContent;
             }
 
