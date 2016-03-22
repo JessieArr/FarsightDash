@@ -65,7 +65,8 @@ namespace FarsightDash.Controls
                 {
                     if (fileStream == null)
                     {
-                        throw new Exception("Unable to open file after multiple retries: " + _FilePath);
+                        // TODO: Log this issue
+                        return;
                     }
                     var reader = new StreamReader(fileStream);
                     var fileText = reader.ReadToEnd();
