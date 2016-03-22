@@ -79,6 +79,7 @@ namespace FarsightDash.Controls
 
         private FileStream WaitForFile(string fullPath)
         {
+            Exception exception = null;
             for (int numTries = 0; numTries < 10; numTries++)
             {
                 try
@@ -90,12 +91,17 @@ namespace FarsightDash.Controls
 
                     return fs;
                 }
-                catch (IOException)
+                catch (IOException ex)
                 {
+                    exception = ex;
                     Thread.Sleep(5);
                 }
             }
 
+            if (exception != null)
+            {
+                FarsightLogger.DefaultLogger.LogError(exception.Message);
+            }
             return null;
         }
     }
