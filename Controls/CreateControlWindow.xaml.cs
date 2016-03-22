@@ -30,13 +30,13 @@ namespace FarsightDash.Controls
             var newControl = new LayoutAnchorable();
 
             var selectedItem = ControlSelector.SelectedItem;
-            if (selectedItem == ControlNameStrings.DirectoryWatcher)
+            if ((string) selectedItem == ControlNameStrings.DirectoryWatcher)
             {
                 var newControlContent = new DirectoryWatcher(SelectedPath);
                 newControl.Content = newControlContent;
             }
 
-            if (selectedItem == ControlNameStrings.FileTail)
+            if ((string)selectedItem == ControlNameStrings.FileTail)
             {
                 var newControlContent = new FileTail(SelectedPath);
                 newControl.Content = newControlContent;
@@ -53,14 +53,14 @@ namespace FarsightDash.Controls
         {
             var selectedItem = ControlSelector.SelectedItem;
 
-            if (selectedItem == ControlNameStrings.DirectoryWatcher)
+            if ((string)selectedItem == ControlNameStrings.DirectoryWatcher)
             {
                 var fbd = new FolderBrowserDialog();
                 var result = fbd.ShowDialog();
                 SelectedPath = fbd.SelectedPath;
             }
 
-            if (selectedItem == ControlNameStrings.FileTail)
+            if ((string)selectedItem == ControlNameStrings.FileTail)
             {
                 var fbd = new OpenFileDialog();
                 var result = fbd.ShowDialog();
