@@ -94,13 +94,14 @@ namespace FarsightDash.Controls
                 catch (IOException ex)
                 {
                     exception = ex;
+                    FarsightLogger.DefaultLogger.LogInfo(exception.Message);
                     Thread.Sleep(5);
                 }
             }
 
             if (exception != null)
             {
-                FarsightLogger.DefaultLogger.LogError(exception.Message);
+                FarsightLogger.DefaultLogger.LogError("Failed to read from file: " + exception.Message);
             }
             return null;
         }

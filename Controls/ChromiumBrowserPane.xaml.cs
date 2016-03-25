@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CefSharp;
 
 namespace FarsightDash.Controls
 {
@@ -23,6 +24,9 @@ namespace FarsightDash.Controls
         public ChromiumBrowserPane(string initialURL)
         {
             InitializeComponent();
+
+            WebBrowser.BrowserSettings.FileAccessFromFileUrls = CefState.Enabled;
+            WebBrowser.BrowserSettings.UniversalAccessFromFileUrls = CefState.Enabled;
 
             WebBrowser.Address = initialURL;
             WebBrowser.Load(initialURL);
