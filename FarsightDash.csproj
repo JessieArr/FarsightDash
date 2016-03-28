@@ -129,26 +129,6 @@
     <Compile Include="Controls\RefreshImage.xaml.cs">
       <DependentUpon>RefreshImage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DataEmitters\URLImageSource.cs" />
-    <Compile Include="DataEmitters\HTTPGetPoller.cs" />
-    <Compile Include="FarsightComponents\EmitDataHandler.cs" />
-    <Compile Include="FarsightComponents\EmitDataHandlerArgs.cs" />
-    <Compile Include="FarsightComponents\IDataConsumer.cs" />
-    <Compile Include="FarsightComponents\IDataEmitter.cs" />
-    <Compile Include="FarsightComponents\IEmitDataHandlerArgs.cs" />
-    <Compile Include="FarsightComponents\ITransform.cs" />
-    <Compile Include="FarsightComponents\Models\FarsightWebResponse.cs" />
-    <Compile Include="FarsightLogger.cs" />
-    <Compile Include="IFarsightLogger.cs" />
-    <Compile Include="Transforms\GetDateFromDateTime.cs" />
-    <Compile Include="Transforms\GetTimeFromDateTime.cs" />
-    <Compile Include="Transforms\GetURLAndResultFromWebResponse.cs" />
-    <Compile Include="Views\ImageView.xaml.cs">
-      <DependentUpon>ImageView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\LabelView.xaml.cs">
-      <DependentUpon>LabelView.xaml</DependentUpon>
-    </Compile>
     <Page Include="Controls\ChromiumBrowserPane.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -199,20 +179,11 @@
     <Compile Include="Controls\DirectoryWatcher.xaml.cs">
       <DependentUpon>DirectoryWatcher.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DataEmitters\CurrentTimeDataEmitter.cs" />
     <Compile Include="DockHelper.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\ImageView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\LabelView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -245,7 +216,16 @@
   <ItemGroup>
     <Resource Include="FodyWeavers.xml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\FarsightDash.Core\FarsightDash.BaseModules.csproj">
+      <Project>{38323449-F912-489A-913D-A4A4FB038242}</Project>
+      <Name>FarsightDash.BaseModules</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FarsightDash.Interfaces\FarsightDash.Common.csproj">
+      <Project>{A9A2AA29-7C66-427D-8C5D-144D773B7217}</Project>
+      <Name>FarsightDash.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.1.28.3\build\Fody.targets" Condition="Exists('..\packages\Fody.1.28.3\build\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

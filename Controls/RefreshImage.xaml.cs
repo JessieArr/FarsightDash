@@ -12,10 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using FarsightDash.DataEmitters;
-using FarsightDash.FarsightComponents;
-using FarsightDash.Transforms;
-using FarsightDash.Views;
+using FarsightDash.BaseModules.DataEmitters;
+using FarsightDash.BaseModules.Views;
+using FarsightDash.Common;
 
 namespace FarsightDash.Controls
 {

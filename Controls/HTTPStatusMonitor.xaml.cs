@@ -1,21 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using FarsightDash.DataEmitters;
-using FarsightDash.FarsightComponents;
-using FarsightDash.Transforms;
-using FarsightDash.Views;
+﻿using System.Windows.Controls;
+using FarsightDash.BaseModules.DataEmitters;
+using FarsightDash.BaseModules.Transforms;
+using FarsightDash.BaseModules.Views;
+using FarsightDash.Common;
 
 namespace FarsightDash.Controls
 {

@@ -27,6 +27,7 @@ namespace FarsightDash.Controls
 
             WebBrowser.BrowserSettings.FileAccessFromFileUrls = CefState.Enabled;
             WebBrowser.BrowserSettings.UniversalAccessFromFileUrls = CefState.Enabled;
+            WebBrowser.BrowserSettings.MinimumFontSize = 5;
 
             WebBrowser.Address = initialURL;
             WebBrowser.Load(initialURL);
