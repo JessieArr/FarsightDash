@@ -37,6 +37,8 @@ namespace FarsightDash
             {
                 FarsightLogger.DefaultLogger.LogInfo("Loading assembly: " + args.LoadedAssembly.FullName);
             };
+
+            Bootstrapper.InitializeApplication();
         }
     }
 }

@@ -2,13 +2,14 @@
 using System.IO;
 using System.Windows.Controls;
 using FarsightDash.Common;
+using FarsightDash.Common.Interfaces;
 
 namespace FarsightDash.BaseModules.Controls
 {
     /// <summary>
     /// Interaction logic for DirectoryWatcher.xaml
     /// </summary>
-    public partial class DirectoryWatcher : UserControl
+    public partial class DirectoryWatcher : UserControl, IFarsightDashModule
     {
         private readonly FileSystemWatcher _Watcher;
         public DirectoryWatcher(string directoryToWatch)
@@ -90,6 +91,12 @@ namespace FarsightDash.BaseModules.Controls
                 DirectoryChangeLog.Text += args.Name + " Renamed at: " + DateTime.Now + Environment.NewLine;
                 DirectoryChangeLog.ScrollToEnd();
             });
+        }
+
+        public string ModuleName { get; set; }
+        public string ModuleTypeName
+        {
+            get { return nameof(DirectoryWatcher); }
         }
     }
 }

@@ -8,16 +8,16 @@ using FarsightDash.Common.Interfaces;
 
 namespace FarsightDash.BaseModules.ModuleFactories
 {
-    public class ChromiumBrowserModuleFactory : IModuleFactory
+    public class DirectoryWatcherModuleFactory : IModuleFactory
     {
         public string ModuleTypeName
         {
-            get { return "Chromium Browser"; }
+            get { return "Directory Watcher"; }
         }
 
         public IModuleSetupView GetNewModuleSetupView(IFarsightModuleRegistry moduleRegistry)
         {
-            return new ChromiumBrowserSetupView();
+            return new DirectoryWatcherSetupView();
         }
     }
 }

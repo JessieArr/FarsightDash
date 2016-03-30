@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -14,18 +14,21 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using FarsightDash.BaseModules.Controls;
 using FarsightDash.Common.Interfaces;
+using UserControl = System.Windows.Controls.UserControl;
 
 namespace FarsightDash.BaseModules.ModuleSetupViews
 {
     /// <summary>
-    /// Interaction logic for ChromiumBrowserSetupView.xaml
+    /// Interaction logic for DirectoryWatcherSetupView.xaml
     /// </summary>
-    public partial class ChromiumBrowserSetupView : UserControl, IModuleSetupView
+    public partial class DirectoryWatcherSetupView : UserControl, IModuleSetupView
     {
-        public ChromiumBrowserSetupView()
+        public DirectoryWatcherSetupView()
         {
             InitializeComponent();
         }
+
+        private string _SelectedPath;
 
         public UserControl Control
         {
@@ -34,16 +37,23 @@ namespace FarsightDash.BaseModules.ModuleSetupViews
 
         public bool IsEnteredUserDataValid()
         {
-            return !String.IsNullOrEmpty(URLTextBox.Text);
+            return !String.IsNullOrEmpty(_SelectedPath);
         }
 
         public List<IFarsightDashModule> CreateModules(IFarsightModuleRegistry moduleRegistry)
         {
-            var browser = new ChromiumBrowserPane(URLTextBox.Text);
+            var module = new DirectoryWatcher(_SelectedPath);
             return new List<IFarsightDashModule>()
             {
-                browser
+                module
             };
+        }
+
+        private void DirectorySelectButton_Click(object sender, RoutedEventArgs e)
+        {
+            var fbd = new FolderBrowserDialog();
+            var result = fbd.ShowDialog();
+            _SelectedPath = fbd.SelectedPath;
         }
     }
 }

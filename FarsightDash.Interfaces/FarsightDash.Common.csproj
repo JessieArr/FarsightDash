@@ -57,7 +57,9 @@
     <Compile Include="Interfaces\IEmitDataHandlerArgs.cs" />
     <Compile Include="Interfaces\IFarsightDashModule.cs" />
     <Compile Include="Interfaces\IFarsightLogger.cs" />
+    <Compile Include="Interfaces\IFarsightModuleRegistry.cs" />
     <Compile Include="Interfaces\IModuleFactory.cs" />
+    <Compile Include="Interfaces\IModuleSetupView.cs" />
     <Compile Include="Interfaces\ITransform.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Saving\ISavableModule.cs" />

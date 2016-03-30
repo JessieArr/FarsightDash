@@ -103,7 +103,11 @@
     <Compile Include="DataEmitters\HTTPGetPoller.cs" />
     <Compile Include="DataEmitters\URLImageSource.cs" />
     <Compile Include="Models\FarsightWebResponse.cs" />
+    <Compile Include="ModuleFactories\DirectoryWatcherModuleFactory.cs" />
     <Compile Include="ModuleFactories\ChromiumBrowserModuleFactory.cs" />
+    <Compile Include="ModuleSetupViews\DirectoryWatcherSetupView.xaml.cs">
+      <DependentUpon>DirectoryWatcherSetupView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ModuleSetupViews\ChromiumBrowserSetupView.xaml.cs">
       <DependentUpon>ChromiumBrowserSetupView.xaml</DependentUpon>
     </Compile>
@@ -151,6 +155,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\RefreshImage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModuleSetupViews\DirectoryWatcherSetupView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

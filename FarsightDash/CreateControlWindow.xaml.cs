@@ -21,16 +21,8 @@ namespace FarsightDash
         {
             InitializeComponent();
 
-            ControlSelector.ItemsSource = new List<string>
-            {
-                ControlNameStrings.DirectoryWatcher,
-                ControlNameStrings.FileTail,
-                ControlNameStrings.Clock,
-                ControlNameStrings.Date,
-                ControlNameStrings.HTTPStatusMonitor,
-                ControlNameStrings.RefreshImage,
-                ControlNameStrings.ChromiumBrowser
-            };
+            var registry = ModuleFactoryRegistry.DefaultRegistry;
+            ControlSelector.ItemsSource = registry.GetAllRegisteredFactoryNames();
         }
 
         private IModuleSetupView _CurrentModuleSetupView;
@@ -38,48 +30,11 @@ namespace FarsightDash
         private void OKButtonClicked(object sender, RoutedEventArgs e)
         {
             var newControl = new LayoutAnchorable();
-
-            var selectedItem = (string)ControlSelector.SelectedItem;
-            if ( selectedItem == ControlNameStrings.DirectoryWatcher)
+            
+            if (_CurrentModuleSetupView.IsEnteredUserDataValid())
             {
-                var newControlContent = new DirectoryWatcher(SelectedPath);
-                newControl.Content = newControlContent;
-            }
-
-            if (selectedItem == ControlNameStrings.FileTail)
-            {
-                var newControlContent = new FileTail(SelectedPath);
-                newControl.Content = newControlContent;
-            }
-
-            if (selectedItem == ControlNameStrings.Clock)
-            {
-                var newControlContent = new Clock();
-                newControl.Content = newControlContent;
-            }
-
-            if (selectedItem == ControlNameStrings.Date)
-            {
-                var newControlContent = new Date();
-                newControl.Content = newControlContent;
-            }
-
-            if (selectedItem == ControlNameStrings.HTTPStatusMonitor)
-            {
-                var newControlContent = new HTTPStatusMonitor(ControlName.Text, 10);
-                newControl.Content = newControlContent;
-            }
-
-            if (selectedItem == ControlNameStrings.RefreshImage)
-            {
-                var newControlContent = new RefreshImage(ControlName.Text, 10);
-                newControl.Content = newControlContent;
-            }
-
-            if (selectedItem == ControlNameStrings.ChromiumBrowser)
-            {
-                var newControlContent = new ChromiumBrowserPane(ControlName.Text);
-                newControl.Content = newControlContent;
+                var modules = _CurrentModuleSetupView.CreateModules(null);
+                newControl.Content = modules[0];
             }
 
             newControl.Title = ControlName.Text;
@@ -113,11 +68,12 @@ namespace FarsightDash
         private void ControlSelector_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             var selectedItem = (string)ControlSelector.SelectedItem;
-            if (selectedItem == ControlNameStrings.ChromiumBrowser)
-            {
-                _CurrentModuleSetupView = new ChromiumBrowserModuleFactory().GetNewModuleSetupView();
-                ModuleCreationPanel.Children.Add(_CurrentModuleSetupView.Control);
-            }
+            var registry = ModuleFactoryRegistry.DefaultRegistry;
+
+            var factory = registry.GetModuleFactory(selectedItem);
+
+            _CurrentModuleSetupView = factory.GetNewModuleSetupView(ModuleRegistry.DefaultRegistry);
+            ModuleCreationPanel.Children.Add(_CurrentModuleSetupView.Control);
         }
     }
 }
