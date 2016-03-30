@@ -103,8 +103,28 @@
     <Compile Include="DataEmitters\HTTPGetPoller.cs" />
     <Compile Include="DataEmitters\URLImageSource.cs" />
     <Compile Include="Models\FarsightWebResponse.cs" />
+    <Compile Include="ModuleFactories\DateModuleFactory.cs" />
+    <Compile Include="ModuleFactories\ClockModuleFactory.cs" />
+    <Compile Include="ModuleFactories\HTTPStatusMonitorModuleFactory.cs" />
+    <Compile Include="ModuleFactories\RefreshImageModuleFactory.cs" />
+    <Compile Include="ModuleFactories\FileTailModuleFactory.cs" />
     <Compile Include="ModuleFactories\DirectoryWatcherModuleFactory.cs" />
     <Compile Include="ModuleFactories\ChromiumBrowserModuleFactory.cs" />
+    <Compile Include="ModuleSetupViews\DateSetupView.xaml.cs">
+      <DependentUpon>DateSetupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModuleSetupViews\ClockSetupView.xaml.cs">
+      <DependentUpon>ClockSetupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModuleSetupViews\HTTPStatusMonitorSetupView.xaml.cs">
+      <DependentUpon>HTTPStatusMonitorSetupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModuleSetupViews\RefreshImageSetupView.xaml.cs">
+      <DependentUpon>RefreshImageSetupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModuleSetupViews\FileTailSetupView.xaml.cs">
+      <DependentUpon>FileTailSetupView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ModuleSetupViews\DirectoryWatcherSetupView.xaml.cs">
       <DependentUpon>DirectoryWatcherSetupView.xaml</DependentUpon>
     </Compile>
@@ -155,6 +175,26 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\RefreshImage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModuleSetupViews\DateSetupView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModuleSetupViews\ClockSetupView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModuleSetupViews\HTTPStatusMonitorSetupView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModuleSetupViews\RefreshImageSetupView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModuleSetupViews\FileTailSetupView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

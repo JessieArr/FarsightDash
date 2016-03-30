@@ -10,7 +10,7 @@ namespace FarsightDash.BaseModules.Controls
     /// <summary>
     /// Interaction logic for Date.xaml
     /// </summary>
-    public partial class Date : UserControl
+    public partial class Date : UserControl, IFarsightDashModule
     {
         private IDataEmitter _DataEmitter;
         private ITransform _Transform;
@@ -29,6 +29,13 @@ namespace FarsightDash.BaseModules.Controls
             _DataEmitter.Initialize();
 
             Content = _View;
+        }
+
+        public string ModuleName { get; set; }
+
+        public string ModuleTypeName
+        {
+            get { return nameof(Date); }
         }
     }
 }

@@ -10,7 +10,7 @@ namespace FarsightDash.BaseModules.Controls
     /// <summary>
     /// Interaction logic for Clock.xaml
     /// </summary>
-    public partial class Clock : UserControl
+    public partial class Clock : UserControl, IFarsightDashModule
     {
         private IDataEmitter _DataEmitter;
         private ITransform _Transform;
@@ -29,6 +29,13 @@ namespace FarsightDash.BaseModules.Controls
             _DataEmitter.Initialize();
 
             Content = _View;
+        }
+
+        public string ModuleName { get; set; }
+
+        public string ModuleTypeName
+        {
+            get { return nameof(Clock); }
         }
     }
 }

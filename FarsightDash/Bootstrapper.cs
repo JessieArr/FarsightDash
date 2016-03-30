@@ -14,6 +14,11 @@ namespace FarsightDash
             var registry = ModuleFactoryRegistry.DefaultRegistry;
             registry.RegisterModuleFactory(new ChromiumBrowserModuleFactory());
             registry.RegisterModuleFactory(new DirectoryWatcherModuleFactory());
+            registry.RegisterModuleFactory(new FileTailModuleFactory());
+            registry.RegisterModuleFactory(new RefreshImageModuleFactory());
+            registry.RegisterModuleFactory(new HTTPStatusMonitorModuleFactory());
+            registry.RegisterModuleFactory(new ClockModuleFactory());
+            registry.RegisterModuleFactory(new DateModuleFactory());
         }
     }
 }

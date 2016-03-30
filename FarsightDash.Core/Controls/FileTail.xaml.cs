@@ -3,13 +3,14 @@ using System.IO;
 using System.Threading;
 using System.Windows.Controls;
 using FarsightDash.Common;
+using FarsightDash.Common.Interfaces;
 
 namespace FarsightDash.BaseModules.Controls
 {
     /// <summary>
     /// Interaction logic for DirectoryWatcher.xaml
     /// </summary>
-    public partial class FileTail : UserControl
+    public partial class FileTail : UserControl, IFarsightDashModule
     {
         private readonly FileSystemWatcher _Watcher;
         private readonly string _FilePath;
@@ -93,6 +94,13 @@ namespace FarsightDash.BaseModules.Controls
                 FarsightLogger.DefaultLogger.LogError("Failed to read from file: " + exception.Message);
             }
             return null;
+        }
+
+        public string ModuleName { get; set; }
+
+        public string ModuleTypeName
+        {
+            get { return nameof(FileTail); }
         }
     }
 }

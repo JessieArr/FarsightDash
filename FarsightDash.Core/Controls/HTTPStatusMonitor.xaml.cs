@@ -10,7 +10,7 @@ namespace FarsightDash.BaseModules.Controls
     /// <summary>
     /// Interaction logic for HTTPStatusMonitor.xaml
     /// </summary>
-    public partial class HTTPStatusMonitor : UserControl
+    public partial class HTTPStatusMonitor : UserControl, IFarsightDashModule
     {
         private IDataEmitter _DataEmitter;
         private ITransform _Transform;
@@ -29,6 +29,13 @@ namespace FarsightDash.BaseModules.Controls
             _DataEmitter.Initialize();
 
             Content = _View;
+        }
+
+        public string ModuleName { get; set; }
+
+        public string ModuleTypeName
+        {
+            get { return nameof(HTTPStatusMonitor); }
         }
     }
 }

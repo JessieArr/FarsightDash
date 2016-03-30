@@ -9,7 +9,7 @@ namespace FarsightDash.BaseModules.Controls
     /// <summary>
     /// Interaction logic for RefreshImage.xaml
     /// </summary>
-    public partial class RefreshImage : UserControl
+    public partial class RefreshImage : UserControl, IFarsightDashModule
     {
         private IDataEmitter _DataEmitter;
         private ImageView _View;
@@ -25,6 +25,13 @@ namespace FarsightDash.BaseModules.Controls
             _DataEmitter.Initialize();
 
             Content = _View;
+        }
+
+        public string ModuleName { get; set; }
+
+        public string ModuleTypeName
+        {
+            get { return nameof(RefreshImage); }
         }
     }
 }
