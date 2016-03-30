@@ -1,12 +1,13 @@
 ﻿using System.Windows.Controls;
 using CefSharp;
+using FarsightDash.Common.Interfaces;
 
 namespace FarsightDash.BaseModules.Controls
 {
     /// <summary>
     /// Interaction logic for ChromiumBrowserPane.xaml
     /// </summary>
-    public partial class ChromiumBrowserPane : UserControl
+    public partial class ChromiumBrowserPane : UserControl, IFarsightDashModule
     {
         public ChromiumBrowserPane(string initialURL)
         {
@@ -18,6 +19,13 @@ namespace FarsightDash.BaseModules.Controls
 
             WebBrowser.Address = initialURL;
             WebBrowser.Load(initialURL);
+        }
+
+        public string ModuleName { get; set; }
+
+        public string ModuleTypeName
+        {
+            get { return nameof(ChromiumBrowserPane); }
         }
     }
 }
