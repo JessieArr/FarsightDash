@@ -200,7 +200,22 @@
   </Target>
   <PropertyGroup>
     <PostBuildEvent>cd $(TargetDir)
-del *.dll</PostBuildEvent>
+del *.dll
+del *.pdb
+del *.log
+del *.xml
+del *.zip
+del *.vshost.*
+rd de /s/q
+rd es /s/q
+rd fr /s/q
+rd hu /s/q
+rd it /s/q
+rd pt-BR /s/q
+rd ro /s/q
+rd ru /s/q
+rd sv /s/q
+rd zh-Hans /s/q</PostBuildEvent>
   </PropertyGroup>
   <Import Project="..\packages\cef.redist.x64.3.2526.1362\build\cef.redist.x64.targets" Condition="Exists('..\packages\cef.redist.x64.3.2526.1362\build\cef.redist.x64.targets')" />
   <Import Project="..\packages\cef.redist.x86.3.2526.1362\build\cef.redist.x86.targets" Condition="Exists('..\packages\cef.redist.x86.3.2526.1362\build\cef.redist.x86.targets')" />
