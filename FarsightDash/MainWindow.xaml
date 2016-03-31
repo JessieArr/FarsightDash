@@ -6,6 +6,7 @@
     <Grid>
         <Menu>
             <MenuItem Header="File">
+                <MenuItem Header="Save" Click="SaveMenuItemClicked" />
                 <MenuItem Header="Exit" Click="ExitMenuItemClicked" />
             </MenuItem>
             <MenuItem Header="Controls">

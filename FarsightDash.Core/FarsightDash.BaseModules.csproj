@@ -132,6 +132,7 @@
       <DependentUpon>ChromiumBrowserSetupView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SavableModuleFactories\ChromiumBrowserSavableFactory.cs" />
     <Compile Include="Transforms\GetDateFromDateTime.cs" />
     <Compile Include="Transforms\GetTimeFromDateTime.cs" />
     <Compile Include="Transforms\GetURLAndResultFromWebResponse.cs" />

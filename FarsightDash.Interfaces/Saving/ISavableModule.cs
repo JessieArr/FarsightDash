@@ -1,6 +1,8 @@
-﻿namespace FarsightDash.Common.Saving
+﻿using FarsightDash.Common.Interfaces;
+
+namespace FarsightDash.Common.Saving
 {
-    public interface ISavableModule
+    public interface ISavableModule : IFarsightDashModule
     {
         string GetSaveString();
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,12 @@ namespace FarsightDash
         {
             InitializeComponent();
             DockHelper.RootAnchorablePane = AnchorablePane;
+
+            var saveHelper = new SaveFileHelper();
+            if (File.Exists("Autosave.ini"))
+            {
+                saveHelper.LoadSavedModuleFromFile("Autosave.ini");
+            }
         }
 
         private void ExitMenuItemClicked(object sender, RoutedEventArgs e)
@@ -42,6 +49,15 @@ namespace FarsightDash
             popupWindow.Width = 400;
             popupWindow.Height = 400;
             popupWindow.Show();
+        }
+
+        private void SaveMenuItemClicked(object sender, RoutedEventArgs e)
+        {
+            var saveHelper = new SaveFileHelper();
+
+            var savableData = ModuleRegistry.DefaultRegistry.GetSavableModuleData();
+
+            saveHelper.SaveModuleData("Autosave.ini", savableData);
         }
     }
 }

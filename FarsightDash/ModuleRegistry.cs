@@ -6,21 +6,48 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using FarsightDash.Common;
 using FarsightDash.Common.Interfaces;
+using FarsightDash.Common.Saving;
 
 namespace FarsightDash
 {
     public class ModuleRegistry : IFarsightModuleRegistry
     {
-        public static IFarsightModuleRegistry DefaultRegistry = new ModuleRegistry();
+        public static ModuleRegistry DefaultRegistry = new ModuleRegistry();
+
+        private Dictionary<string, IFarsightDashModule> _Modules = new Dictionary<string, IFarsightDashModule>(); 
 
         public void RegisterModule(IFarsightDashModule newModule)
         {
-            throw new NotImplementedException();
+            if (_Modules.ContainsKey(newModule.ModuleName))
+            {
+                throw new Exception($"Module {newModule.ModuleName} already registered!");
+            }
+
+            _Modules.Add(newModule.ModuleName, newModule);
         }
 
-        public void RegisterDataConsumer(string dataEmitterName, IDataConsumer consumer)
+        public List<ISavableModuleData> GetSavableModuleData()
         {
-            throw new NotImplementedException();
-        }
+            var list = new List<ISavableModuleData>();
+
+            var savableModules = _Modules.Select(x =>
+            {
+                if (x.Value is ISavableModule)
+                {
+                    return x.Value as ISavableModule;
+                }
+                return null;
+            });
+            foreach (var module in savableModules)
+            {
+                var moduleData = new SavableModuleData();
+                moduleData.ModuleTypeName = module.ModuleTypeName;
+                moduleData.ModuleName = module.ModuleName;
+                moduleData.ModuleData = module.GetSaveString();
+                list.Add(moduleData);
+            }
+
+            return list;
+        } 
     }
 }

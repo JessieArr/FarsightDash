@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FarsightDash.Common.Interfaces;
+using FarsightDash.Common.Saving;
 
 namespace FarsightDash
 {
@@ -31,18 +32,29 @@ namespace FarsightDash
             return _RegisteredFactories[factoryName];
         }
 
+        private Dictionary<string, ISavableModuleFactory> _RegisteredSavableFactories = new Dictionary<string, ISavableModuleFactory>();
+
+        public void RegisterSavableModuleFactory(ISavableModuleFactory factory)
+        {
+            if (_RegisteredSavableFactories.ContainsKey(factory.ModuleTypeName))
+            {
+                throw new Exception($"Factory for control: {factory.ModuleTypeName} is already registered!");
+            }
+            _RegisteredSavableFactories.Add(factory.ModuleTypeName, factory);
+        }
+
+        public ISavableModuleFactory GetSavableModuleFactory(string factoryName)
+        {
+            if (!_RegisteredSavableFactories.ContainsKey(factoryName))
+            {
+                throw new Exception($"Factory for control: {factoryName} is not registered!");
+            }
+            return _RegisteredSavableFactories[factoryName];
+        }
+
         public List<string> GetAllRegisteredFactoryNames()
         {
             return _RegisteredFactories.Keys.ToList();
         } 
-    }
-
-    public interface IModuleFactoryRegistry
-    {
-        void RegisterModuleFactory(IModuleFactory factory);
-
-        IModuleFactory GetModuleFactory(string factoryName);
-
-        List<string> GetAllRegisteredFactoryNames();
     }
 }

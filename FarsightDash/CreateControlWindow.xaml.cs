@@ -34,11 +34,17 @@ namespace FarsightDash
             if (_CurrentModuleSetupView.IsEnteredUserDataValid())
             {
                 var modules = _CurrentModuleSetupView.CreateModules(null);
-                newControl.Content = modules[0];
+                // TODO: Handle more than one returned module here!
+                var firstModule = modules[0];
+                firstModule.ModuleName = ControlName.Text;
+
+                newControl.Content = firstModule;
+                ModuleRegistry.DefaultRegistry.RegisterModule(firstModule);
             }
 
             newControl.Title = ControlName.Text;
             DockHelper.RootAnchorablePane.Children.Add(newControl);
+
 
             var parentWindow = (Window)Parent;
             parentWindow.Close();

@@ -1,8 +1,11 @@
 ﻿
+using FarsightDash.Common.Interfaces;
+
 namespace FarsightDash.Common.Saving
 {
-    public interface ISavableModuleFactory<T> where T : ISavableModule
+    public interface ISavableModuleFactory
     {
-        T GetSavableModuleFromString(string savedString);
+        string ModuleTypeName { get; }
+        ISavableModule GetSavableModuleFromString(string savedString);
     }
 }
