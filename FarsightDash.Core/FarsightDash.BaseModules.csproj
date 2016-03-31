@@ -133,6 +133,10 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SavableModuleFactories\ChromiumBrowserSavableFactory.cs" />
+    <Compile Include="SavableModuleFactories\DirectoryWatcherSavableFactory.cs" />
+    <Compile Include="SavableModuleFactories\RefreshImageSavableFactory.cs" />
+    <Compile Include="SavableModuleFactories\HTTPStatusMonitorSavableFactory.cs" />
+    <Compile Include="SavableModuleFactories\FileTailSavableFactory.cs" />
     <Compile Include="Transforms\GetDateFromDateTime.cs" />
     <Compile Include="Transforms\GetTimeFromDateTime.cs" />
     <Compile Include="Transforms\GetURLAndResultFromWebResponse.cs" />

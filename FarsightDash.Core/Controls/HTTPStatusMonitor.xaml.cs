@@ -4,21 +4,27 @@ using FarsightDash.BaseModules.Transforms;
 using FarsightDash.BaseModules.Views;
 using FarsightDash.Common;
 using FarsightDash.Common.Interfaces;
+using FarsightDash.Common.Saving;
 
 namespace FarsightDash.BaseModules.Controls
 {
     /// <summary>
     /// Interaction logic for HTTPStatusMonitor.xaml
     /// </summary>
-    public partial class HTTPStatusMonitor : UserControl, IFarsightDashModule
+    public partial class HTTPStatusMonitor : UserControl, IFarsightDashModule, ISavableModule
     {
         private IDataEmitter _DataEmitter;
         private ITransform _Transform;
         private LabelView _View;
+        private string _URL;
+        private int _IntervalInSeconds;
 
         public HTTPStatusMonitor(string url, int intervalInSeconds)
         {
             InitializeComponent();
+
+            _URL = url;
+            _IntervalInSeconds = intervalInSeconds;
 
             _DataEmitter = new HTTPGetPoller(url, intervalInSeconds);
             _Transform = new GetURLAndResultFromWebResponse();
@@ -36,6 +42,11 @@ namespace FarsightDash.BaseModules.Controls
         public string ModuleTypeName
         {
             get { return nameof(HTTPStatusMonitor); }
+        }
+
+        public string GetSaveString()
+        {
+            return _URL + " " + _IntervalInSeconds;
         }
     }
 }

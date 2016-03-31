@@ -4,13 +4,14 @@ using System.Threading;
 using System.Windows.Controls;
 using FarsightDash.Common;
 using FarsightDash.Common.Interfaces;
+using FarsightDash.Common.Saving;
 
 namespace FarsightDash.BaseModules.Controls
 {
     /// <summary>
     /// Interaction logic for DirectoryWatcher.xaml
     /// </summary>
-    public partial class FileTail : UserControl, IFarsightDashModule
+    public partial class FileTail : UserControl, IFarsightDashModule, ISavableModule
     {
         private readonly FileSystemWatcher _Watcher;
         private readonly string _FilePath;
@@ -101,6 +102,11 @@ namespace FarsightDash.BaseModules.Controls
         public string ModuleTypeName
         {
             get { return nameof(FileTail); }
+        }
+
+        public string GetSaveString()
+        {
+            return _FilePath;
         }
     }
 }

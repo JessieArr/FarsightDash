@@ -31,6 +31,10 @@ namespace FarsightDash
         private static void RegisterSavableModuleFactories(IModuleFactoryRegistry registry)
         {
             registry.RegisterSavableModuleFactory(new ChromiumBrowserSavableFactory());
+            registry.RegisterSavableModuleFactory(new FileTailSavableFactory());
+            registry.RegisterSavableModuleFactory(new DirectoryWatcherSavableFactory());
+            registry.RegisterSavableModuleFactory(new HTTPStatusMonitorSavableFactory());
+            registry.RegisterSavableModuleFactory(new RefreshImageSavableFactory());
         }
     }
 }

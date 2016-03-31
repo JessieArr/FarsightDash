@@ -10,6 +10,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Grid.Column="0" Name="FileSelectButton" Click="FileSelectButton_Click">Select Directory to Watch</Button>
+        <Button Grid.Row="0" Grid.Column="0" Name="FileSelectButton" Click="FileSelectButton_Click">Select File to Watch</Button>
     </Grid>
 </UserControl>

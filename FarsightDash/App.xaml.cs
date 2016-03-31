@@ -40,5 +40,12 @@ namespace FarsightDash
 
             Bootstrapper.InitializeApplication();
         }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            var saveFileHelper = new SaveFileHelper();
+            saveFileHelper.Autosave();
+            base.OnExit(e);
+        }
     }
 }
