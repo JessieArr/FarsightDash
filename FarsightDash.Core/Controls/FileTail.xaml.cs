@@ -24,8 +24,8 @@ namespace FarsightDash.BaseModules.Controls
             InitializeComponent();
             _FilePath = filePathToTail;
 
-            var directory = System.IO.Path.GetDirectoryName(filePathToTail);
-            var fileName = System.IO.Path.GetFileName(filePathToTail);
+            var directory = Path.GetDirectoryName(filePathToTail);
+            var fileName = Path.GetFileName(filePathToTail);
 
             _Watcher = new FileSystemWatcher();
             _Watcher.Path = directory;
@@ -55,7 +55,7 @@ namespace FarsightDash.BaseModules.Controls
                 {
                     if (fileStream == null)
                     {
-                        // TODO: Log this issue
+                        FarsightLogger.DefaultLogger.LogError("Failed to read from file, fileStream was null.");
                         return;
                     }
                     var reader = new StreamReader(fileStream);
@@ -74,7 +74,7 @@ namespace FarsightDash.BaseModules.Controls
             {
                 try
                 {
-                    FileStream fs = new FileStream(fullPath, FileMode.Open, FileAccess.Read);
+                    FileStream fs = new FileStream(fullPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
 
                     fs.ReadByte();
                     fs.Seek(0, SeekOrigin.Begin);

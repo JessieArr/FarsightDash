@@ -24,20 +24,23 @@ namespace FarsightDash
     /// </summary>
     public partial class MainWindow : Window
     {
+        private SaveFileHelper _SaveFileHelper;
         public MainWindow()
         {
             InitializeComponent();
             DockHelper.RootAnchorablePane = AnchorablePane;
 
-            var saveHelper = new SaveFileHelper();
+            _SaveFileHelper = new SaveFileHelper();
             if (File.Exists("Autosave.ini"))
             {
-                saveHelper.LoadSavedModuleFromFile("Autosave.ini");
+                _SaveFileHelper.LoadSavedModuleFromFile("Autosave.ini");
             }
         }
 
         private void ExitMenuItemClicked(object sender, RoutedEventArgs e)
         {
+            _SaveFileHelper.Autosave();
+
             Application.Current.Shutdown();
         }
 
@@ -53,11 +56,7 @@ namespace FarsightDash
 
         private void SaveMenuItemClicked(object sender, RoutedEventArgs e)
         {
-            var saveHelper = new SaveFileHelper();
-
-            var savableData = ModuleRegistry.DefaultRegistry.GetSavableModuleData();
-
-            saveHelper.SaveModuleData("Autosave.ini", savableData);
+            _SaveFileHelper.Autosave();
         }
     }
 }

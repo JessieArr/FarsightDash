@@ -15,6 +15,13 @@ namespace FarsightDash
 {
     public class SaveFileHelper
     {
+        public void Autosave()
+        {
+            var savableData = ModuleRegistry.DefaultRegistry.GetSavableModuleData();
+
+            SaveModuleData("Autosave.ini", savableData);
+        }
+
         public void SaveModuleData(string fileName, List<ISavableModuleData> moduleData)
         {
             var iniData = new IniData();
