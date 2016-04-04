@@ -29,6 +29,7 @@ namespace FarsightDash
         {
             InitializeComponent();
             DockHelper.RootAnchorablePane = AnchorablePane;
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
             _SaveFileHelper = new SaveFileHelper();
             if (File.Exists("Autosave.ini"))
@@ -49,14 +50,57 @@ namespace FarsightDash
             var popupWindow = new Window();
             var createControlWindowContent = new CreateControlWindow();
             popupWindow.Content = createControlWindowContent;
-            popupWindow.Width = 400;
-            popupWindow.Height = 400;
+            popupWindow.Owner = this;
+            popupWindow.Height = 500;
+            popupWindow.Width = 650;
             popupWindow.Show();
         }
 
         private void SaveMenuItemClicked(object sender, RoutedEventArgs e)
         {
             _SaveFileHelper.Autosave();
+        }
+
+        private void ManageControlsClicked(object sender, RoutedEventArgs e)
+        {
+            var popupWindow = new Window();
+            var manageControlsWindowContent = new ManageControlsWindow();
+            popupWindow.Content = manageControlsWindowContent;
+            popupWindow.Owner = this;
+            popupWindow.Height = 500;
+            popupWindow.Width = 650;
+            popupWindow.Show();
+        }
+
+        private bool _IsFullScreen { get; set; }
+        private void ToggleFullscreenMenuItemClicked(object sender, RoutedEventArgs e)
+        {
+            if (_IsFullScreen)
+            {
+                WindowStyle = WindowStyle.SingleBorderWindow;
+                WindowState = WindowState.Normal;
+                TopBarMenu.Visibility = Visibility.Visible;
+
+                _IsFullScreen = false;
+            }
+            else
+            {
+                WindowStyle = WindowStyle.None;
+                WindowState = WindowState.Maximized;
+                TopBarMenu.Visibility = Visibility.Collapsed;
+
+                _IsFullScreen = true;
+            }
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Key.F11:
+                    ToggleFullscreenMenuItemClicked(this, new RoutedEventArgs());
+                    return;
+            }
         }
     }
 }

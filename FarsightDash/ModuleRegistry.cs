@@ -48,6 +48,11 @@ namespace FarsightDash
             }
 
             return list;
+        }
+
+        public List<ModuleManagementData> GetRegisteredControlNames()
+        {
+            return _Modules.Select(x => new ModuleManagementData(x.Value)).ToList();
         } 
     }
 }

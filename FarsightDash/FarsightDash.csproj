@@ -117,10 +117,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ManageControlsWindow.xaml.cs">
+      <DependentUpon>ManageControlsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="IModuleFactoryRegistry.cs" />
     <Compile Include="ISavableModuleData.cs" />
+    <Compile Include="ModuleManagementData.cs" />
     <Compile Include="SavableModuleData.cs" />
     <Compile Include="SaveFileHelper.cs" />
+    <Compile Include="Themes\DarkBlendAvalonDockTheme.cs" />
+    <Compile Include="Themes\LeftMarginMultiplierConverter.cs" />
+    <Compile Include="Themes\TreeViewItemExtensions.cs" />
+    <Page Include="ManageControlsWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="CreateControlWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -142,6 +153,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Themes\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ModuleFactoryRegistry.cs" />

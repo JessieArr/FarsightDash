@@ -43,8 +43,8 @@ namespace FarsightDash
             }
 
             newControl.Title = ControlName.Text;
+            
             DockHelper.RootAnchorablePane.Children.Add(newControl);
-
 
             var parentWindow = (Window)Parent;
             parentWindow.Close();
