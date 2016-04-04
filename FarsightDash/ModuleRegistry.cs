@@ -14,7 +14,7 @@ namespace FarsightDash
     {
         public static ModuleRegistry DefaultRegistry = new ModuleRegistry();
 
-        private Dictionary<string, IFarsightDashModule> _Modules = new Dictionary<string, IFarsightDashModule>(); 
+        private Dictionary<string, IFarsightDashModule> _Modules = new Dictionary<string, IFarsightDashModule>();
 
         public void RegisterModule(IFarsightDashModule newModule)
         {
@@ -24,6 +24,16 @@ namespace FarsightDash
             }
 
             _Modules.Add(newModule.ModuleName, newModule);
+        }
+
+        public void UnregisterModule(IFarsightDashModule newModule)
+        {
+            if (!_Modules.ContainsKey(newModule.ModuleName))
+            {
+                throw new Exception($"Module {newModule.ModuleName} is not registered!");
+            }
+
+            _Modules.Remove(newModule.ModuleName);
         }
 
         public List<ISavableModuleData> GetSavableModuleData()

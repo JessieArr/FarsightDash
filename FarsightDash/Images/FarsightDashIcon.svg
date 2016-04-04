@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="128"
+   height="128"
+   viewBox="0 0 128 128"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="FarsightDashIcon.svg">
+  <title
+     id="title4240">Farsight Dashboard Icon</title>
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="3.28"
+     inkscape:cx="-41.351254"
+     inkscape:cy="54.638549"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="760"
+     inkscape:window-y="100"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Farsight Dashboard Icon</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-924.36216)">
+    <ellipse
+       style="fill:#005080;fill-opacity:1"
+       id="path3342"
+       cx="64.176834"
+       cy="987.11823"
+       rx="64.176834"
+       ry="40.548782" />
+    <ellipse
+       style="fill:#ffffff"
+       id="path3342-7"
+       cx="64.176826"
+       cy="987.11835"
+       rx="56.097561"
+       ry="33.231705" />
+    <ellipse
+       style="fill:#ff0000"
+       id="path3359"
+       cx="63.880989"
+       cy="986.9967"
+       rx="16.391926"
+       ry="16.402153" />
+    <ellipse
+       style="fill:#ffffff"
+       id="path3359-4"
+       cx="63.880989"
+       cy="987.13116"
+       rx="10.748803"
+       ry="11.427729" />
+    <ellipse
+       style="fill:#000000"
+       id="path3359-4-2"
+       cx="63.923973"
+       cy="987.1701"
+       rx="6.3149219"
+       ry="6.4533052" />
+    <path
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.88167685px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 61.413691,1005.3715 0,9.8868 4.370317,0 0,-9.8868 z"
+       id="path3393"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.88167685px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 81.945449,989.11388 9.879833,-0.13036 -0.05761,-4.37271 -9.879833,0.13035 z"
+       id="path3393-4"
+       inkscape:connector-curvature="0"
+       inkscape:transform-center-x="10.211364"
+       inkscape:transform-center-y="7.6633041" />
+    <path
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.88167685px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 36.128672,989.5172 9.879832,-0.13035 -0.05761,-4.37272 -9.879832,0.13035 z"
+       id="path3393-4-8"
+       inkscape:connector-curvature="0"
+       inkscape:transform-center-x="10.211365"
+       inkscape:transform-center-y="7.6632987" />
+    <path
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.88167685px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 61.695833,959.19787 0,9.88685 4.370317,0 0,-9.88685 z"
+       id="path3393-7"
+       inkscape:connector-curvature="0" />
+  </g>
+</svg>

@@ -78,8 +78,11 @@ namespace FarsightDash
                 ModuleRegistry.DefaultRegistry.RegisterModule(module);
 
                 newControl.Title = module.ModuleName;
+                newControl.Hiding += (o, args) =>
+                {
+                    ModuleRegistry.DefaultRegistry.UnregisterModule(module);
+                };
                 DockHelper.RootAnchorablePane.Children.Add(newControl);
-
             }
         }
     }
