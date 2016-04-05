@@ -8,7 +8,7 @@ namespace FarsightDash.BaseModules.Controls
     /// <summary>
     /// Interaction logic for ChromiumBrowserPane.xaml
     /// </summary>
-    public partial class ChromiumBrowserPane : UserControl, IFarsightDashModule, ISavableModule
+    public partial class ChromiumBrowserPane : UserControl, ISavableModule, IDashboardView
     {
         public ChromiumBrowserPane(string initialURL)
         {
@@ -33,5 +33,7 @@ namespace FarsightDash.BaseModules.Controls
         {
             return WebBrowser.Address;
         }
+
+        public UserControl Control { get { return this; } }
     }
 }

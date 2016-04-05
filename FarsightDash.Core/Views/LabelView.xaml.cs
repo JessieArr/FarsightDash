@@ -7,7 +7,7 @@ namespace FarsightDash.BaseModules.Views
     /// <summary>
     /// Interaction logic for LabelView.xaml
     /// </summary>
-    public partial class LabelView : UserControl, IDataConsumer
+    public partial class LabelView : UserControl, IDataConsumer, IDashboardView
     {
         public LabelView()
         {
@@ -33,5 +33,7 @@ namespace FarsightDash.BaseModules.Views
         {
             get { return nameof(LabelView); }
         }
+
+        public UserControl Control { get { return this; } }
     }
 }

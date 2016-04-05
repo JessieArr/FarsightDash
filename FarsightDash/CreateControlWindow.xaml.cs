@@ -28,9 +28,7 @@ namespace FarsightDash
         private IModuleSetupView _CurrentModuleSetupView;
 
         private void OKButtonClicked(object sender, RoutedEventArgs e)
-        {
-            var newControl = new LayoutAnchorable();
-            
+        {        
             if (_CurrentModuleSetupView.IsEnteredUserDataValid())
             {
                 var modules = _CurrentModuleSetupView.CreateModules(null);
@@ -38,23 +36,26 @@ namespace FarsightDash
                 var firstModule = modules[0];
                 firstModule.ModuleName = ControlName.Text;
 
-                newControl.Content = firstModule;
+                var view = firstModule as IDashboardView;
+                if(view != null)
+                {
+                    var newControl = new LayoutAnchorable();
+                    newControl.Content = firstModule;
+                    newControl.Hiding += (o, args) =>
+                    {
+                        ModuleRegistry.DefaultRegistry.UnregisterModule(firstModule);
+                    };
+
+                    newControl.Title = ControlName.Text;
+
+                    DockHelper.RootAnchorablePane.Children.Add(newControl);
+                }
+
                 ModuleRegistry.DefaultRegistry.RegisterModule(firstModule);
 
-                newControl.Hiding += (o, args) =>
-                {
-                    ModuleRegistry.DefaultRegistry.UnregisterModule(firstModule);
-                };
+                var parentWindow = (Window)Parent;
+                parentWindow.Close();
             }
-
-            newControl.Title = ControlName.Text;
-            
-
-
-            DockHelper.RootAnchorablePane.Children.Add(newControl);
-
-            var parentWindow = (Window)Parent;
-            parentWindow.Close();
         }
 
         private void SelectTargetClicked(object sender, RoutedEventArgs e)

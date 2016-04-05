@@ -10,7 +10,7 @@ namespace FarsightDash.BaseModules.DataEmitters
         public event EmitDataHandler EmitData;
         public void Initialize()
         {
-            EmitData(this, new EmitDataHandlerArgs(DateTime.Now.ToString()));
+            TryEmitData();
         }
 
         private int _IntervalInSeconds;
@@ -24,9 +24,17 @@ namespace FarsightDash.BaseModules.DataEmitters
             _Timer = new Timer(intervalInSeconds * _MillisecondsPerSecond);
             _Timer.Elapsed += (sender, args) =>
             {
-                EmitData(this, new EmitDataHandlerArgs(DateTime.Now.ToString()));
+                TryEmitData();
             };
             _Timer.Enabled = true;
+        }
+
+        private void TryEmitData()
+        {
+            if (EmitData != null)
+            {
+                EmitData(this, new EmitDataHandlerArgs(DateTime.Now.ToString()));
+            }
         }
 
         public string ModuleName { get; set; }

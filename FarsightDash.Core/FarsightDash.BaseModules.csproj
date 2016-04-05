@@ -103,6 +103,8 @@
     <Compile Include="DataEmitters\HTTPGetPoller.cs" />
     <Compile Include="DataEmitters\URLImageSource.cs" />
     <Compile Include="Models\FarsightWebResponse.cs" />
+    <Compile Include="ModuleFactories\LabelModuleFactory.cs" />
+    <Compile Include="ModuleFactories\CurrentTimeModuleFactory.cs" />
     <Compile Include="ModuleFactories\DateModuleFactory.cs" />
     <Compile Include="ModuleFactories\ClockModuleFactory.cs" />
     <Compile Include="ModuleFactories\HTTPStatusMonitorModuleFactory.cs" />
@@ -110,6 +112,12 @@
     <Compile Include="ModuleFactories\FileTailModuleFactory.cs" />
     <Compile Include="ModuleFactories\DirectoryWatcherModuleFactory.cs" />
     <Compile Include="ModuleFactories\ChromiumBrowserModuleFactory.cs" />
+    <Compile Include="ModuleSetupViews\LabelSetupView.xaml.cs">
+      <DependentUpon>LabelSetupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModuleSetupViews\CurrentTimeSetupView.xaml.cs">
+      <DependentUpon>CurrentTimeSetupView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ModuleSetupViews\DateSetupView.xaml.cs">
       <DependentUpon>DateSetupView.xaml</DependentUpon>
     </Compile>
@@ -180,6 +188,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\RefreshImage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModuleSetupViews\LabelSetupView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModuleSetupViews\CurrentTimeSetupView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -10,9 +10,12 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Grid.Column="0" Height="25">Available Controls:</Label>
-        <DataGrid Name="ControlGrid" Grid.Row="2" AutoGenerateColumns="False">
+        <Label Grid.Row="0" Height="25">Available Controls:</Label>
+        <DataGrid Name="ControlGrid" Grid.Row="1" AutoGenerateColumns="False" SelectedCellsChanged="ControlGridSelectedCellsChanged">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Name" Width="SizeToCells" IsReadOnly="True" SortMemberPath="ModuleName" CanUserSort="True">
                     <DataGridTemplateColumn.CellTemplate>
@@ -51,5 +54,48 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <Label Grid.Row="2">Select a Module, Then Choose an Action Below:</Label>
+        <ComboBox Grid.Row="3" Name="ActionsComboBox">
+        </ComboBox>
+        <DataGrid Name="ControlToBeConnectedGrid" Grid.Row="4" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Name" Width="SizeToCells" IsReadOnly="True" SortMemberPath="ModuleName" CanUserSort="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding ModuleName}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Type" Width="SizeToCells" IsReadOnly="True" SortMemberPath="ModuleTypeName" CanUserSort="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label Content="{Binding ModuleTypeName}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Emitter" Width="SizeToCells" IsReadOnly="True" SortMemberPath="IsDataEmitter" CanUserSort="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox Content="{Binding IsDataEmitter}" IsEnabled="False" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Consumer" Width="SizeToCells" IsReadOnly="True" SortMemberPath="IsDataConsumer" CanUserSort="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox Content="{Binding IsDataConsumer}" IsEnabled="False" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="View" Width="SizeToCells" IsReadOnly="True" SortMemberPath="IsDashboardView" CanUserSort="True">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox Content="{Binding IsDashboardView}" IsEnabled="False" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Grid.Row="5" Content="Submit" IsEnabled="False" Name="SubmitButton" Click="SubmitButtonClicked"></Button>
     </Grid>
 </UserControl>

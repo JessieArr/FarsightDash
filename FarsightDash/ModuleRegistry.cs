@@ -26,6 +26,16 @@ namespace FarsightDash
             _Modules.Add(newModule.ModuleName, newModule);
         }
 
+        internal IFarsightDashModule GetRegisteredModule(string moduleName)
+        {
+            if (!_Modules.ContainsKey(moduleName))
+            {
+                throw new Exception($"Module {moduleName} was not registered!");
+            }
+
+            return _Modules[moduleName];
+        }
+
         public void UnregisterModule(IFarsightDashModule newModule)
         {
             if (!_Modules.ContainsKey(newModule.ModuleName))
@@ -40,13 +50,12 @@ namespace FarsightDash
         {
             var list = new List<ISavableModuleData>();
 
-            var savableModules = _Modules.Select(x =>
+            var savableModules = _Modules.Where(x =>
             {
-                if (x.Value is ISavableModule)
-                {
-                    return x.Value as ISavableModule;
-                }
-                return null;
+                return x.Value is ISavableModule;
+            }).Select(x =>
+            {
+                return x.Value as ISavableModule;
             });
             foreach (var module in savableModules)
             {
@@ -60,9 +69,26 @@ namespace FarsightDash
             return list;
         }
 
-        public List<ModuleManagementData> GetRegisteredControlNames()
+        public List<ModuleManagementData> GetRegisteredControlData()
         {
             return _Modules.Select(x => new ModuleManagementData(x.Value)).ToList();
-        } 
+        }
+
+        public void ConsumeData(IFarsightDashModule moduleToBeConsumed, IFarsightDashModule consumingModule)
+        {
+            var selectedEmitter = moduleToBeConsumed as IDataEmitter;
+            var selectedConsumer = consumingModule as IDataConsumer;
+
+            if (selectedEmitter == null)
+            {
+                throw new Exception($"{moduleToBeConsumed.ModuleName} is not a {nameof(IDataEmitter)}!");
+            }
+            if (selectedConsumer == null)
+            {
+                throw new Exception($"{consumingModule.ModuleName} is not a {nameof(IDataConsumer)}!");
+            }
+
+            selectedEmitter.EmitData += selectedConsumer.DataHandler;
+        }
     }
 }

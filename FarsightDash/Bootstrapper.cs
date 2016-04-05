@@ -26,6 +26,8 @@ namespace FarsightDash
             registry.RegisterModuleFactory(new HTTPStatusMonitorModuleFactory());
             registry.RegisterModuleFactory(new ClockModuleFactory());
             registry.RegisterModuleFactory(new DateModuleFactory());
+            registry.RegisterModuleFactory(new CurrentTimeModuleFactory());
+            registry.RegisterModuleFactory(new LabelModuleFactory());
         }
 
         private static void RegisterSavableModuleFactories(IModuleFactoryRegistry registry)
