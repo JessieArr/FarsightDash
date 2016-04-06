@@ -86,6 +86,11 @@ namespace FarsightDash
 
             var factory = registry.GetModuleFactory(selectedItem);
 
+            if (_CurrentModuleSetupView != null && ModuleCreationPanel.Children.Contains(_CurrentModuleSetupView.Control))
+            {
+                ModuleCreationPanel.Children.Remove(_CurrentModuleSetupView.Control);
+            }
+
             _CurrentModuleSetupView = factory.GetNewModuleSetupView(ModuleRegistry.DefaultRegistry);
             ModuleCreationPanel.Children.Add(_CurrentModuleSetupView.Control);
         }

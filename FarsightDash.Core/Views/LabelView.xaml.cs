@@ -26,7 +26,7 @@ namespace FarsightDash.BaseModules.Views
                         ContentLabel.Content = args.Data;
                     });
                 };
-            } 
+            }
         }
 
         public string ModuleName { get; set; }
