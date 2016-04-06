@@ -1,13 +1,14 @@
 ﻿using System.Windows.Controls;
 using FarsightDash.Common;
 using FarsightDash.Common.Interfaces;
+using FarsightDash.Common.Saving;
 
 namespace FarsightDash.BaseModules.Views
 {
     /// <summary>
     /// Interaction logic for LabelView.xaml
     /// </summary>
-    public partial class LabelView : UserControl, IDataConsumer, IDashboardView
+    public partial class LabelView : UserControl, IDataConsumer, IDashboardView, ISavableModule
     {
         public LabelView()
         {
@@ -32,6 +33,11 @@ namespace FarsightDash.BaseModules.Views
         public string ModuleTypeName
         {
             get { return nameof(LabelView); }
+        }
+
+        public string GetSaveString()
+        {
+            return "";
         }
 
         public UserControl Control { get { return this; } }

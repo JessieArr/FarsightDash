@@ -15,40 +15,41 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Height="25">Available Controls:</Label>
-        <DataGrid Name="ControlGrid" Grid.Row="1" AutoGenerateColumns="False" SelectedCellsChanged="ControlGridSelectedCellsChanged">
+        <DataGrid Name="ControlGrid" Grid.Row="1" AutoGenerateColumns="False" CanUserSortColumns="True"
+                  SelectedCellsChanged="ControlGridSelectedCellsChanged">
             <DataGrid.Columns>
-                <DataGridTemplateColumn Header="Name" Width="SizeToCells" IsReadOnly="True" SortMemberPath="ModuleName" CanUserSort="True">
+                <DataGridTemplateColumn Header="Name" x:Name="NameColumn"  Width="SizeToCells" IsReadOnly="True" SortMemberPath="ModuleName" CanUserSort="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Label Content="{Binding ModuleName}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Type" Width="SizeToCells" IsReadOnly="True" SortMemberPath="ModuleTypeName" CanUserSort="True">
+                <DataGridTemplateColumn Header="Type" x:Name="TypeNameColumn" Width="SizeToCells" IsReadOnly="True" SortMemberPath="ModuleTypeName" CanUserSort="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Label Content="{Binding ModuleTypeName}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Emitter" Width="SizeToCells" IsReadOnly="True" SortMemberPath="IsDataEmitter" CanUserSort="True">
+                <DataGridTemplateColumn Header="Emitter" Width="SizeToCells" MinWidth="60" IsReadOnly="True" SortMemberPath="IsDataEmitter" CanUserSort="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <CheckBox Content="{Binding IsDataEmitter}" IsEnabled="False" />
+                            <CheckBox IsChecked="{Binding IsDataEmitter}" IsEnabled="False" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Consumer" Width="SizeToCells" IsReadOnly="True" SortMemberPath="IsDataConsumer" CanUserSort="True">
+                <DataGridTemplateColumn Header="Consumer" Width="SizeToCells" MinWidth="60" IsReadOnly="True" SortMemberPath="IsDataConsumer" CanUserSort="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <CheckBox Content="{Binding IsDataConsumer}" IsEnabled="False" />
+                            <CheckBox IsChecked="{Binding IsDataConsumer}" IsEnabled="False" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="View" Width="SizeToCells" IsReadOnly="True" SortMemberPath="IsDashboardView" CanUserSort="True">
+                <DataGridTemplateColumn Header="View" Width="SizeToCells" MinWidth="60" IsReadOnly="True" SortMemberPath="IsDashboardView" CanUserSort="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <CheckBox Content="{Binding IsDashboardView}" IsEnabled="False" />
+                            <CheckBox IsChecked="{Binding IsDashboardView}" IsEnabled="False" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

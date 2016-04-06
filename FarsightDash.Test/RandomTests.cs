@@ -22,7 +22,7 @@ namespace FarsightDash.Test
                     ModuleName = "TestName",
                     ModuleData= "TestData"
                 }
-            });
+            }, new Dictionary<string, List<string>>());
         }
     }
 }

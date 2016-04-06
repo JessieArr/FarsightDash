@@ -15,6 +15,7 @@ namespace FarsightDash
         public static ModuleRegistry DefaultRegistry = new ModuleRegistry();
 
         private Dictionary<string, IFarsightDashModule> _Modules = new Dictionary<string, IFarsightDashModule>();
+        private Dictionary<string, List<string>> _ConsumerDictionary = new Dictionary<string, List<string>>();
 
         public void RegisterModule(IFarsightDashModule newModule)
         {
@@ -88,7 +89,42 @@ namespace FarsightDash
                 throw new Exception($"{consumingModule.ModuleName} is not a {nameof(IDataConsumer)}!");
             }
 
+            if (!_ConsumerDictionary.ContainsKey(selectedConsumer.ModuleName))
+            {
+                _ConsumerDictionary.Add(selectedConsumer.ModuleName, new List<string>());
+            }
+            if (_ConsumerDictionary[selectedConsumer.ModuleName].Contains(selectedEmitter.ModuleName))
+            {
+                throw new Exception(
+                    $"Module {selectedEmitter.ModuleName} is already being consumed by {selectedConsumer.ModuleName}");
+            }
+            else
+            {
+                _ConsumerDictionary[selectedConsumer.ModuleName].Add(selectedEmitter.ModuleName);
+            }
+
             selectedEmitter.EmitData += selectedConsumer.DataHandler;
+        }
+
+        public Dictionary<string, List<string>> GetSavableConsumerDictionary()
+        {
+            var result = new Dictionary<string, List<string>>();
+
+            foreach (var consumer in _ConsumerDictionary)
+            {
+                var consumerObject = GetRegisteredModule(consumer.Key);
+                if (!(consumerObject is ISavableModule))
+                {
+                    continue;
+                }
+
+                var savableEmitters =
+                    _ConsumerDictionary[consumer.Key].Where(x => GetRegisteredModule(x) is ISavableModule).ToList();
+
+                result.Add(consumer.Key, savableEmitters);
+            }
+
+            return result;
         }
     }
 }

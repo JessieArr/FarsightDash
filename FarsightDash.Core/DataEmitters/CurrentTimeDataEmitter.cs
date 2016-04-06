@@ -2,10 +2,11 @@
 using System.Timers;
 using FarsightDash.Common;
 using FarsightDash.Common.Interfaces;
+using FarsightDash.Common.Saving;
 
 namespace FarsightDash.BaseModules.DataEmitters
 {
-    public class CurrentTimeDataEmitter : IDataEmitter
+    public class CurrentTimeDataEmitter : IDataEmitter, ISavableModule
     {
         public event EmitDataHandler EmitData;
         public void Initialize()
@@ -41,6 +42,11 @@ namespace FarsightDash.BaseModules.DataEmitters
         public string ModuleTypeName
         {
             get { return nameof(CurrentTimeDataEmitter); }
+        }
+
+        public string GetSaveString()
+        {
+            return _IntervalInSeconds.ToString();
         }
     }
 }

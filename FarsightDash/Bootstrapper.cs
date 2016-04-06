@@ -37,6 +37,7 @@ namespace FarsightDash
             registry.RegisterSavableModuleFactory(new DirectoryWatcherSavableFactory());
             registry.RegisterSavableModuleFactory(new HTTPStatusMonitorSavableFactory());
             registry.RegisterSavableModuleFactory(new RefreshImageSavableFactory());
+            registry.RegisterSavableModuleFactory(new LabelViewSavableFactory());
         }
     }
 }

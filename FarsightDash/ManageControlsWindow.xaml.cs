@@ -24,7 +24,7 @@ namespace FarsightDash
             InitializeComponent();
 
             var registry = ModuleRegistry.DefaultRegistry;
-            ControlGrid.ItemsSource = registry.GetRegisteredControlData();
+            ControlGrid.ItemsSource = registry.GetRegisteredControlData().OrderBy(x => x.ModuleName);
 
             ActionsComboBox.ItemsSource = new[] { DeleteActionString, ConnectDataConsumerString };
         }

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Navigation;
 using FarsightDash.Common;
 using FarsightDash.Common.Interfaces;
 using FarsightDash.Common.Saving;
@@ -15,14 +16,17 @@ namespace FarsightDash
 {
     public class SaveFileHelper
     {
+        private const string _ConsumerHierarchySectionName = "__FarsightDash.Consumer.Hierarchy";
+        private const string _ConsumerHierarchyDelimiter = ", ";
         public void Autosave()
         {
             var savableData = ModuleRegistry.DefaultRegistry.GetSavableModuleData();
+            var consumerHierarchyDictionary = ModuleRegistry.DefaultRegistry.GetSavableConsumerDictionary();
 
-            SaveModuleData("Autosave.ini", savableData);
+            SaveModuleData("Autosave.ini", savableData, consumerHierarchyDictionary);
         }
 
-        public void SaveModuleData(string fileName, List<ISavableModuleData> moduleData)
+        public void SaveModuleData(string fileName, List<ISavableModuleData> moduleData, Dictionary<string, List<string>> consumerHierarchyDictionary)
         {
             var iniData = new IniData();
             foreach (var datum in moduleData)
@@ -32,6 +36,15 @@ namespace FarsightDash
                     iniData.Sections.AddSection(datum.ModuleTypeName);
                 }
                 iniData[datum.ModuleTypeName].AddKey(datum.ModuleName, datum.ModuleData);
+            }
+
+            iniData.Sections.AddSection(_ConsumerHierarchySectionName);
+            foreach (var consumer in consumerHierarchyDictionary)
+            {
+                iniData[_ConsumerHierarchySectionName].AddKey(consumer.Key, consumer.Value.Aggregate((a, b) =>
+                {
+                    return a + _ConsumerHierarchyDelimiter + b;
+                }));
             }
 
             var parser = new FileIniDataParser();
@@ -48,6 +61,12 @@ namespace FarsightDash
             foreach (var section in iniData.Sections)
             {
                 var factoryRegistry = ModuleFactoryRegistry.DefaultRegistry;
+
+                if (section.SectionName == _ConsumerHierarchySectionName)
+                {
+                    continue;
+                }
+
                 try
                 {
                     var factory = factoryRegistry.GetSavableModuleFactory(section.SectionName);

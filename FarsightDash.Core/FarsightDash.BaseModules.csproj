@@ -142,6 +142,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SavableModuleFactories\ChromiumBrowserSavableFactory.cs" />
     <Compile Include="SavableModuleFactories\DirectoryWatcherSavableFactory.cs" />
+    <Compile Include="SavableModuleFactories\CurrentTimeEmitterSavableFactory.cs" />
+    <Compile Include="SavableModuleFactories\LabelViewSavableFactory.cs" />
     <Compile Include="SavableModuleFactories\RefreshImageSavableFactory.cs" />
     <Compile Include="SavableModuleFactories\HTTPStatusMonitorSavableFactory.cs" />
     <Compile Include="SavableModuleFactories\FileTailSavableFactory.cs" />
