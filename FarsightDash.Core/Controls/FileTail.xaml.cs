@@ -11,7 +11,7 @@ namespace FarsightDash.BaseModules.Controls
     /// <summary>
     /// Interaction logic for DirectoryWatcher.xaml
     /// </summary>
-    public partial class FileTail : UserControl, IFarsightDashModule, ISavableModule
+    public partial class FileTail : UserControl, ISavableModule, IDashboardView
     {
         private readonly FileSystemWatcher _Watcher;
         private readonly string _FilePath;
@@ -108,5 +108,7 @@ namespace FarsightDash.BaseModules.Controls
         {
             return _FilePath;
         }
+
+        public UserControl Control { get { return this; } }
     }
 }

@@ -120,6 +120,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AnchorableViewService.cs" />
     <Compile Include="ManageControlsWindow.xaml.cs">
       <DependentUpon>ManageControlsWindow.xaml</DependentUpon>
     </Compile>

@@ -36,22 +36,17 @@ namespace FarsightDash
                 var firstModule = modules[0];
                 firstModule.ModuleName = ControlName.Text;
 
+                ModuleRegistry.DefaultRegistry.RegisterModule(firstModule);
+
                 var view = firstModule as IDashboardView;
                 if(view != null)
                 {
-                    var newControl = new LayoutAnchorable();
-                    newControl.Content = firstModule;
-                    newControl.Hiding += (o, args) =>
-                    {
-                        ModuleRegistry.DefaultRegistry.UnregisterModule(firstModule);
-                    };
+                    var anchorableService = new AnchorableViewService();
+                    var newAnchorable = anchorableService.GetAnchorableFromView(view);
 
-                    newControl.Title = ControlName.Text;
-
-                    DockHelper.RootAnchorablePane.Children.Add(newControl);
+                    DockHelper.RootAnchorablePane.Children.Add(newAnchorable);
                 }
 
-                ModuleRegistry.DefaultRegistry.RegisterModule(firstModule);
 
                 var parentWindow = (Window)Parent;
                 parentWindow.Close();

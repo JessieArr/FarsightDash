@@ -89,19 +89,17 @@ namespace FarsightDash
         public void LoadSavedModuleFromFile(string fileName)
         {
             var savedModules = GetSavedModulesFromFile(fileName);
+            var anchorableService = new AnchorableViewService();
 
             foreach (var module in savedModules)
             {
-                var newControl = new LayoutAnchorable();
-                newControl.Content = module;
                 ModuleRegistry.DefaultRegistry.RegisterModule(module);
 
-                newControl.Title = module.ModuleName;
-                newControl.Hiding += (o, args) =>
+                if (module is IDashboardView)
                 {
-                    ModuleRegistry.DefaultRegistry.UnregisterModule(module);
-                };
-                DockHelper.RootAnchorablePane.Children.Add(newControl);
+                    var newControl = anchorableService.GetAnchorableFromView((IDashboardView) module);
+                    DockHelper.RootAnchorablePane.Children.Add(newControl);
+                }
             }
         }
     }
