@@ -41,10 +41,13 @@ namespace FarsightDash
             iniData.Sections.AddSection(_ConsumerHierarchySectionName);
             foreach (var consumer in consumerHierarchyDictionary)
             {
-                iniData[_ConsumerHierarchySectionName].AddKey(consumer.Key, consumer.Value.Aggregate((a, b) =>
+                if (consumer.Value.Count > 0)
                 {
-                    return a + _ConsumerHierarchyDelimiter + b;
-                }));
+                    iniData[_ConsumerHierarchySectionName].AddKey(consumer.Key, consumer.Value.Aggregate((a, b) =>
+                    {
+                        return a + _ConsumerHierarchyDelimiter + b;
+                    }));
+                }
             }
 
             var parser = new FileIniDataParser();

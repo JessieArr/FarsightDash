@@ -68,11 +68,20 @@
   <ItemGroup>
     <Compile Include="RandomTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegexTransformTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FarsightDash.Core\FarsightDash.BaseModules.csproj">
+      <Project>{38323449-F912-489A-913D-A4A4FB038242}</Project>
+      <Name>FarsightDash.BaseModules</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FarsightDash.Interfaces\FarsightDash.Common.csproj">
+      <Project>{a9a2aa29-7c66-427d-8c5d-144d773b7217}</Project>
+      <Name>FarsightDash.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FarsightDash\FarsightDash.csproj">
       <Project>{2A1101E8-E3DB-4291-B1AF-980DE495B8F4}</Project>
       <Name>FarsightDash</Name>

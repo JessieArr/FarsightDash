@@ -28,6 +28,7 @@ namespace FarsightDash
             registry.RegisterModuleFactory(new DateModuleFactory());
             registry.RegisterModuleFactory(new CurrentTimeModuleFactory());
             registry.RegisterModuleFactory(new LabelModuleFactory());
+            registry.RegisterModuleFactory(new RegexFilterModuleFactory());
         }
 
         private static void RegisterSavableModuleFactories(IModuleFactoryRegistry registry)
@@ -38,6 +39,8 @@ namespace FarsightDash
             registry.RegisterSavableModuleFactory(new HTTPStatusMonitorSavableFactory());
             registry.RegisterSavableModuleFactory(new RefreshImageSavableFactory());
             registry.RegisterSavableModuleFactory(new LabelViewSavableFactory());
+            registry.RegisterSavableModuleFactory(new CurrentTimeEmitterSavableFactory());
+            registry.RegisterSavableModuleFactory(new RegexFilterSavableFactory());
         }
     }
 }

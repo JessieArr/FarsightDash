@@ -15,7 +15,7 @@ namespace FarsightDash.BaseModules.Transforms
         public string ModuleName { get; set; }
         public string ModuleTypeName
         {
-            get { return nameof(GetDateFromDateTime); }
+            get { return nameof(TimestampTransform); }
         }
     }
 }

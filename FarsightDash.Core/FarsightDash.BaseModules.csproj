@@ -103,6 +103,7 @@
     <Compile Include="DataEmitters\HTTPGetPoller.cs" />
     <Compile Include="DataEmitters\URLImageSource.cs" />
     <Compile Include="Models\FarsightWebResponse.cs" />
+    <Compile Include="ModuleFactories\RegexFilterModuleFactory.cs" />
     <Compile Include="ModuleFactories\LabelModuleFactory.cs" />
     <Compile Include="ModuleFactories\CurrentTimeModuleFactory.cs" />
     <Compile Include="ModuleFactories\DateModuleFactory.cs" />
@@ -112,6 +113,9 @@
     <Compile Include="ModuleFactories\FileTailModuleFactory.cs" />
     <Compile Include="ModuleFactories\DirectoryWatcherModuleFactory.cs" />
     <Compile Include="ModuleFactories\ChromiumBrowserModuleFactory.cs" />
+    <Compile Include="ModuleSetupViews\RegexFilterSetupView.xaml.cs">
+      <DependentUpon>RegexFilterSetupView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ModuleSetupViews\LabelSetupView.xaml.cs">
       <DependentUpon>LabelSetupView.xaml</DependentUpon>
     </Compile>
@@ -144,12 +148,14 @@
     <Compile Include="SavableModuleFactories\DirectoryWatcherSavableFactory.cs" />
     <Compile Include="SavableModuleFactories\CurrentTimeEmitterSavableFactory.cs" />
     <Compile Include="SavableModuleFactories\LabelViewSavableFactory.cs" />
+    <Compile Include="SavableModuleFactories\RegexFilterSavableFactory.cs" />
     <Compile Include="SavableModuleFactories\RefreshImageSavableFactory.cs" />
     <Compile Include="SavableModuleFactories\HTTPStatusMonitorSavableFactory.cs" />
     <Compile Include="SavableModuleFactories\FileTailSavableFactory.cs" />
     <Compile Include="Transforms\GetDateFromDateTime.cs" />
     <Compile Include="Transforms\GetTimeFromDateTime.cs" />
     <Compile Include="Transforms\GetURLAndResultFromWebResponse.cs" />
+    <Compile Include="Transforms\RegexFilter.cs" />
     <Compile Include="Transforms\TimestampTransform.cs" />
     <Compile Include="Views\ImageView.xaml.cs">
       <DependentUpon>ImageView.xaml</DependentUpon>
@@ -190,6 +196,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\RefreshImage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModuleSetupViews\RegexFilterSetupView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

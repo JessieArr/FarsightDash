@@ -8,7 +8,7 @@ namespace FarsightDash.BaseModules.SavableModuleFactories
 {
     public class CurrentTimeEmitterSavableFactory : ISavableModuleFactory
     {
-        public string ModuleTypeName { get { return nameof(LabelView); } }
+        public string ModuleTypeName { get { return nameof(CurrentTimeDataEmitter); } }
         public ISavableModule GetSavableModuleFromString(string savedString)
         {
             return new CurrentTimeDataEmitter(Int32.Parse(savedString));
