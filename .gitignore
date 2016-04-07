@@ -53,3 +53,5 @@ packages/*
 *.suo
 *.ncrunchproject
 *.ncrunchsolution
+*.ncrunchsolution.user
+*.crunchsolution.cache
