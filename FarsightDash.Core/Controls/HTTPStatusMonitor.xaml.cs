@@ -14,7 +14,6 @@ namespace FarsightDash.BaseModules.Controls
     public partial class HTTPStatusMonitor : UserControl, ISavableModule, IDashboardView
     {
         private IDataEmitter _DataEmitter;
-        private ITransform _Transform;
         private LabelView _View;
         private string _URL;
         private int _IntervalInSeconds;
@@ -26,12 +25,10 @@ namespace FarsightDash.BaseModules.Controls
             _URL = url;
             _IntervalInSeconds = intervalInSeconds;
 
-            _DataEmitter = new HTTPGetPoller(url, intervalInSeconds);
-            _Transform = new GetURLAndResultFromWebResponse();
+            _DataEmitter = new HTTPGetter(url, intervalInSeconds, new WebResponseHelper(), true, true, false, false);
             _View = new LabelView();
 
-            _DataEmitter.EmitData += _Transform.DataHandler;
-            _Transform.EmitData += _View.DataHandler;
+            _DataEmitter.EmitData += _View.DataHandler;
             _DataEmitter.Initialize();
 
             Content = _View;

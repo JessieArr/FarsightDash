@@ -100,9 +100,9 @@
       <DependentUpon>RefreshImage.xaml</DependentUpon>
     </Compile>
     <Compile Include="DataEmitters\CurrentTimeDataEmitter.cs" />
-    <Compile Include="DataEmitters\HTTPGetPoller.cs" />
+    <Compile Include="DataEmitters\HTTPGetter.cs" />
     <Compile Include="DataEmitters\URLImageSource.cs" />
-    <Compile Include="Models\FarsightWebResponse.cs" />
+    <Compile Include="IHttpWebResponseWrapper.cs" />
     <Compile Include="ModuleFactories\RegexFilterModuleFactory.cs" />
     <Compile Include="ModuleFactories\LabelModuleFactory.cs" />
     <Compile Include="ModuleFactories\CurrentTimeModuleFactory.cs" />
@@ -154,7 +154,6 @@
     <Compile Include="SavableModuleFactories\FileTailSavableFactory.cs" />
     <Compile Include="Transforms\GetDateFromDateTime.cs" />
     <Compile Include="Transforms\GetTimeFromDateTime.cs" />
-    <Compile Include="Transforms\GetURLAndResultFromWebResponse.cs" />
     <Compile Include="Transforms\RegexFilter.cs" />
     <Compile Include="Transforms\TimestampTransform.cs" />
     <Compile Include="Views\ImageView.xaml.cs">
@@ -163,6 +162,8 @@
     <Compile Include="Views\LabelView.xaml.cs">
       <DependentUpon>LabelView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HttpWebResponseWrapper.cs" />
+    <Compile Include="WebResponseHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FarsightDash.Interfaces\FarsightDash.Common.csproj">
