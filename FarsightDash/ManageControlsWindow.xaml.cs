@@ -19,6 +19,8 @@ namespace FarsightDash
     /// </summary>
     public partial class ManageControlsWindow : UserControl
     {
+        private string _DropdownItemSelected = "";
+
         public ManageControlsWindow()
         {
             InitializeComponent();
@@ -75,6 +77,11 @@ namespace FarsightDash
 
         private void ControlGridSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
+            UpdateViewForNewSelections();
+        }
+
+        private void UpdateViewForNewSelections()
+        {
             if (ControlGrid.SelectedItem != null)
             {
                 Dispatcher.Invoke(() =>
@@ -90,7 +97,7 @@ namespace FarsightDash
                 });
             }
 
-            var selectedValue = ActionsComboBox.Text;
+            var selectedValue = _DropdownItemSelected;
             if (selectedValue == ConnectDataConsumerString)
             {
                 var registry = ModuleRegistry.DefaultRegistry;
@@ -98,6 +105,12 @@ namespace FarsightDash
 
                 ControlToBeConnectedGrid.ItemsSource = controls;
             }
+        }
+
+        private void ActionsComboBoxChanged(object sender, SelectionChangedEventArgs e)
+        {
+            _DropdownItemSelected = (string)e.AddedItems[0];
+            UpdateViewForNewSelections();
         }
     }
 }

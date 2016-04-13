@@ -55,7 +55,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <Label Grid.Row="2">Select a Module, Then Choose an Action Below:</Label>
-        <ComboBox Grid.Row="3" Name="ActionsComboBox">
+        <ComboBox Grid.Row="3" Name="ActionsComboBox" SelectionChanged="ActionsComboBoxChanged">
         </ComboBox>
         <DataGrid Name="ControlToBeConnectedGrid" Grid.Row="4" AutoGenerateColumns="False">
             <DataGrid.Columns>
