@@ -20,11 +20,11 @@ using UserControl = System.Windows.Controls.UserControl;
 namespace FarsightDash.BaseModules.ModuleSetupViews
 {
     /// <summary>
-    /// Interaction logic for LabelSetupView.xaml
+    /// Interaction logic for TextBoxSetupView.xaml
     /// </summary>
-    public partial class LabelSetupView : UserControl, IModuleSetupView
+    public partial class TextBoxSetupView : UserControl, IModuleSetupView
     {
-        public LabelSetupView()
+        public TextBoxSetupView()
         {
             InitializeComponent();
         }
@@ -41,7 +41,7 @@ namespace FarsightDash.BaseModules.ModuleSetupViews
 
         public List<IFarsightDashModule> CreateModules(IFarsightModuleRegistry moduleRegistry)
         {
-            var module = new LabelView();
+            var module = new TextBoxView();
             return new List<IFarsightDashModule>()
             {
                 module
