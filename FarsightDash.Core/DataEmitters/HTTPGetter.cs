@@ -8,13 +8,20 @@ using System.Threading.Tasks;
 using System.Timers;
 using FarsightDash.Common;
 using FarsightDash.Common.Interfaces;
+using FarsightDash.Common.Saving;
 
 namespace FarsightDash.BaseModules.DataEmitters
 {
-    public class HTTPGetter : IDataEmitter
+    public class HTTPGetter : IDataEmitter, ISavableModule
     {
         public string ModuleName { get; set; }
         public string ModuleTypeName { get { return nameof(HTTPGetter); } }
+
+        public string GetSaveString()
+        {
+            return $"{_URL} {_IntervalInSeconds} {_IncludeURL} {_IncludeStatus} {_IncludeHeaders} {_IncludeBody}";
+        }
+
         public event EmitDataHandler EmitData;
 
         private string _URL;
@@ -77,22 +84,13 @@ namespace FarsightDash.BaseModules.DataEmitters
             return returnText;
         }
 
-        private string GetStringFromHeaders(WebHeaderCollection headers)
-        {
-            var returnText = "";
-
-            foreach (string header in headers)
-            {
-                returnText += header + ": " + headers[header] + Environment.NewLine;
-            }
-
-            return returnText;
-        }
-
         private void EmitFreshData()
         {
-            var response = GetStringFromURL();
-            EmitData(this, new EmitDataHandlerArgs(response));
+            if (EmitData != null)
+            {
+                var response = GetStringFromURL();
+                EmitData(this, new EmitDataHandlerArgs(response));
+            }
         }
     }
 }

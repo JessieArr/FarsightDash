@@ -104,6 +104,7 @@ namespace FarsightDash
             }
 
             selectedEmitter.EmitData += selectedConsumer.DataHandler;
+            selectedEmitter.Initialize();
         }
 
         public Dictionary<string, List<string>> GetSavableConsumerDictionary()

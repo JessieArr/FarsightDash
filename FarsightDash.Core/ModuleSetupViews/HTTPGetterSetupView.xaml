@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="FarsightDash.BaseModules.ModuleSetupViews.HTTPGetterSetupView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FarsightDash.BaseModules.ModuleSetupViews"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" >URL:</Label>
+        <TextBox Grid.Row="0" Grid.Column="1" Height="25" Name="URLTextBox"></TextBox>
+        <Label Grid.Row="1" Grid.Column="0" >Refresh Interval:</Label>
+        <TextBox Grid.Row="1" Grid.Column="1" Height="25" Name="RefreshTextBox"></TextBox>
+        <Label Grid.Row="2" Grid.Column="0" >Include Response URL:</Label>
+        <CheckBox Grid.Row="2" Grid.Column="1" Height="25" Name="IncludeURLCheckBox"></CheckBox>
+        <Label Grid.Row="3" Grid.Column="0" >Include Response Status:</Label>
+        <CheckBox Grid.Row="3" Grid.Column="1" Height="25" Name="IncludeStatusCheckBox"></CheckBox>
+        <Label Grid.Row="4" Grid.Column="0" >Include Response Headers:</Label>
+        <CheckBox Grid.Row="4" Grid.Column="1" Height="25" Name="IncludeHeadersCheckBox"></CheckBox>
+        <Label Grid.Row="5" Grid.Column="0" >Include Response Body:</Label>
+        <CheckBox Grid.Row="5" Grid.Column="1" Height="25" Name="IncludeBodyCheckBox"></CheckBox>
+    </Grid>
+</UserControl>
