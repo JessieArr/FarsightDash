@@ -64,8 +64,14 @@ namespace FarsightDash
         private void ManageControlsClicked(object sender, RoutedEventArgs e)
         {
             var popupWindow = new Window();
+
+            var scrollViewer = new ScrollViewer();
+            scrollViewer.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
+
             var manageControlsWindowContent = new ManageControlsWindow();
-            popupWindow.Content = manageControlsWindowContent;
+
+            scrollViewer.Content = manageControlsWindowContent;
+            popupWindow.Content = scrollViewer;
             popupWindow.Owner = this;
             popupWindow.Height = 500;
             popupWindow.Width = 650;
