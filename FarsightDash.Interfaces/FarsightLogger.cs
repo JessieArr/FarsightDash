@@ -7,7 +7,7 @@ namespace FarsightDash.Common
 {
     public class FarsightLogger : IFarsightLogger
     {
-        public static FarsightLogger DefaultLogger { get; set; }
+        public static IFarsightLogger DefaultLogger { get; set; }
 
         private Logger _Logger;
 

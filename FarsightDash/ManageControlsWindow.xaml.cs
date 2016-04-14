@@ -72,7 +72,7 @@ namespace FarsightDash
 
         private void CloseParentWindow()
         {
-            ((Window)Parent).Close();
+            ((Window)((ScrollViewer)Parent).Parent).Close();
         }
 
         private void ControlGridSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)

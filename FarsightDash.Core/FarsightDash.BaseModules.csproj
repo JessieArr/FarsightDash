@@ -104,6 +104,7 @@
     <Compile Include="DataEmitters\URLImageSource.cs" />
     <Compile Include="IHttpWebResponseWrapper.cs" />
     <Compile Include="ModuleFactories\HTTPGetterModuleFactory.cs" />
+    <Compile Include="ModuleFactories\XpathFilterModuleFactory.cs" />
     <Compile Include="ModuleFactories\TextBoxModuleFactory.cs" />
     <Compile Include="ModuleFactories\RegexFilterModuleFactory.cs" />
     <Compile Include="ModuleFactories\LabelModuleFactory.cs" />
@@ -117,6 +118,9 @@
     <Compile Include="ModuleFactories\ChromiumBrowserModuleFactory.cs" />
     <Compile Include="ModuleSetupViews\HTTPGetterSetupView.xaml.cs">
       <DependentUpon>HTTPGetterSetupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModuleSetupViews\XpathFilterSetupView.xaml.cs">
+      <DependentUpon>XpathFilterSetupView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ModuleSetupViews\TextBoxSetupView.xaml.cs">
       <DependentUpon>TextBoxSetupView.xaml</DependentUpon>
@@ -156,6 +160,7 @@
     <Compile Include="SavableModuleFactories\DirectoryWatcherSavableFactory.cs" />
     <Compile Include="SavableModuleFactories\CurrentTimeEmitterSavableFactory.cs" />
     <Compile Include="SavableModuleFactories\HTTPGetterSavableFactory.cs" />
+    <Compile Include="SavableModuleFactories\XpathFilterSavableFactory.cs" />
     <Compile Include="SavableModuleFactories\TextBoxViewSavableFactory.cs" />
     <Compile Include="SavableModuleFactories\LabelViewSavableFactory.cs" />
     <Compile Include="SavableModuleFactories\RegexFilterSavableFactory.cs" />
@@ -164,6 +169,7 @@
     <Compile Include="SavableModuleFactories\FileTailSavableFactory.cs" />
     <Compile Include="Transforms\GetDateFromDateTime.cs" />
     <Compile Include="Transforms\GetTimeFromDateTime.cs" />
+    <Compile Include="Transforms\XpathFilter.cs" />
     <Compile Include="Transforms\RegexFilter.cs" />
     <Compile Include="Transforms\TimestampTransform.cs" />
     <Compile Include="Views\ImageView.xaml.cs">
@@ -214,6 +220,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ModuleSetupViews\HTTPGetterSetupView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModuleSetupViews\XpathFilterSetupView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
