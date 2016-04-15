@@ -45,6 +45,18 @@ namespace FarsightDash
             }
 
             _Modules.Remove(newModule.ModuleName);
+            if (_ConsumerDictionary.ContainsKey(newModule.ModuleName))
+            {
+                _ConsumerDictionary.Remove(newModule.ModuleName);
+            }
+
+            foreach (var key in _ConsumerDictionary)
+            {
+                if (key.Value.Any(x => x == newModule.ModuleName))
+                {
+                    key.Value.Remove(newModule.ModuleName);
+                }
+            }
         }
 
         public List<ISavableModuleData> GetSavableModuleData()

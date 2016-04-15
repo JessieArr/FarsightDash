@@ -43,6 +43,15 @@ namespace FarsightDash
                     DockHelper.RootAnchorablePane.Children.Add(newControl);
                 }
             }
+
+            var relationships = GetConsumerRelationshipsFromFileJson(fileName);
+            foreach (var relationship in relationships)
+            {
+                var emitter = ModuleRegistry.DefaultRegistry.GetRegisteredModule(relationship.EmitterModuleName);
+                var consumer = ModuleRegistry.DefaultRegistry.GetRegisteredModule(relationship.ConsumingModuleName);
+
+                ModuleRegistry.DefaultRegistry.ConsumeData(emitter, consumer);
+            }
         }
 
         public List<ISavableModule> GetSavedModulesFromFileJson(string fileName)
@@ -74,6 +83,15 @@ namespace FarsightDash
             return list;
         }
 
+        public List<ModuleConsumerRelationship> GetConsumerRelationshipsFromFileJson(string fileName)
+        {
+            var list = new List<ISavableModule>();
+            var fileData = File.ReadAllText(fileName);
+            var saveData = JsonConvert.DeserializeObject<DashboardSaveData>(fileData);
+
+            return saveData.ConsumerRelationships;
+        }
+
         public void SaveModuleDataJson(string fileName, List<ISavableModuleData> moduleData,
             Dictionary<string, List<string>> consumerHierarchyDictionary)
         {
@@ -95,6 +113,18 @@ namespace FarsightDash
                     ModuleName = module.ModuleName,
                     SaveString = module.ModuleSaveString
                 });
+            }
+
+            foreach (var key in consumerHierarchyDictionary)
+            {
+                foreach (var emitter in key.Value)
+                {
+                    data.ConsumerRelationships.Add(new ModuleConsumerRelationship()
+                    {
+                        ConsumingModuleName = key.Key,
+                        EmitterModuleName = emitter
+                    });
+                }
             }
 
             var serializedData = JsonConvert.SerializeObject(data);
