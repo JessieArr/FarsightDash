@@ -32,9 +32,9 @@ namespace FarsightDash
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
             _SaveFileHelper = new SaveFileHelper();
-            if (File.Exists("Autosave.ini"))
+            if (File.Exists("Autosave.json"))
             {
-                _SaveFileHelper.LoadSavedModuleFromFile("Autosave.ini");
+                _SaveFileHelper.LoadSavedModulesFromFile("Autosave.json");
             }
         }
 

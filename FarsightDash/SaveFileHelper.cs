@@ -8,8 +8,10 @@ using System.Windows.Navigation;
 using FarsightDash.Common;
 using FarsightDash.Common.Interfaces;
 using FarsightDash.Common.Saving;
+using FarsightDash.Saving;
 using IniParser;
 using IniParser.Model;
+using Newtonsoft.Json;
 using Xceed.Wpf.AvalonDock.Layout;
 
 namespace FarsightDash
@@ -23,75 +25,12 @@ namespace FarsightDash
             var savableData = ModuleRegistry.DefaultRegistry.GetSavableModuleData();
             var consumerHierarchyDictionary = ModuleRegistry.DefaultRegistry.GetSavableConsumerDictionary();
 
-            SaveModuleData("Autosave.ini", savableData, consumerHierarchyDictionary);
+            SaveModuleDataJson("Autosave.json", savableData, consumerHierarchyDictionary);
         }
 
-        public void SaveModuleData(string fileName, List<ISavableModuleData> moduleData, Dictionary<string, List<string>> consumerHierarchyDictionary)
+        public void LoadSavedModulesFromFile(string fileName)
         {
-            var iniData = new IniData();
-            foreach (var datum in moduleData)
-            {
-                if (!iniData.Sections.ContainsSection(datum.ModuleName))
-                {
-                    iniData.Sections.AddSection(datum.ModuleTypeName);
-                }
-                iniData[datum.ModuleTypeName].AddKey(datum.ModuleName, datum.ModuleData);
-            }
-
-            iniData.Sections.AddSection(_ConsumerHierarchySectionName);
-            foreach (var consumer in consumerHierarchyDictionary)
-            {
-                if (consumer.Value.Count > 0)
-                {
-                    iniData[_ConsumerHierarchySectionName].AddKey(consumer.Key, consumer.Value.Aggregate((a, b) =>
-                    {
-                        return a + _ConsumerHierarchyDelimiter + b;
-                    }));
-                }
-            }
-
-            var parser = new FileIniDataParser();
-            parser.WriteFile(fileName, iniData);
-        }
-
-        public List<ISavableModule> GetSavedModulesFromFile(string fileName)
-        {
-            var list = new List<ISavableModule>();
-            var parser = new FileIniDataParser();
-
-            var iniData = parser.ReadFile(fileName);
-
-            foreach (var section in iniData.Sections)
-            {
-                var factoryRegistry = ModuleFactoryRegistry.DefaultRegistry;
-
-                if (section.SectionName == _ConsumerHierarchySectionName)
-                {
-                    continue;
-                }
-
-                try
-                {
-                    var factory = factoryRegistry.GetSavableModuleFactory(section.SectionName);
-                    foreach (var key in section.Keys)
-                    {
-                        var module = factory.GetSavableModuleFromString(key.Value);
-                        module.ModuleName = key.KeyName;
-                        list.Add(module);
-                    }
-                }
-                catch (Exception)
-                {
-                    FarsightLogger.DefaultLogger.LogWarning($"No SavableModuleFactory found for module type name: " + section.SectionName);
-                }
-            }
-
-            return list;
-        }
-
-        public void LoadSavedModuleFromFile(string fileName)
-        {
-            var savedModules = GetSavedModulesFromFile(fileName);
+            var savedModules = GetSavedModulesFromFileJson(fileName);
             var anchorableService = new AnchorableViewService();
 
             foreach (var module in savedModules)
@@ -104,6 +43,62 @@ namespace FarsightDash
                     DockHelper.RootAnchorablePane.Children.Add(newControl);
                 }
             }
+        }
+
+        public List<ISavableModule> GetSavedModulesFromFileJson(string fileName)
+        {
+            var list = new List<ISavableModule>();
+            var fileData = File.ReadAllText(fileName);
+            var saveData = JsonConvert.DeserializeObject<DashboardSaveData>(fileData);
+
+            foreach (var type in saveData.ModuleTypeData)
+            {
+                var factoryRegistry = ModuleFactoryRegistry.DefaultRegistry;
+                
+                try
+                {
+                    var factory = factoryRegistry.GetSavableModuleFactory(type.ModuleTypeName);
+                    foreach (var savedModule in type.Modules)
+                    {
+                        var module = factory.GetSavableModuleFromString(savedModule.SaveString);
+                        module.ModuleName = savedModule.ModuleName;
+                        list.Add(module);
+                    }
+                }
+                catch (Exception)
+                {
+                    FarsightLogger.DefaultLogger.LogWarning($"No SavableModuleFactory found for module type name: " + type.ModuleTypeName);
+                }
+            }
+
+            return list;
+        }
+
+        public void SaveModuleDataJson(string fileName, List<ISavableModuleData> moduleData,
+            Dictionary<string, List<string>> consumerHierarchyDictionary)
+        {
+            var data = new DashboardSaveData();
+
+            foreach (var module in moduleData)
+            {
+                var moduleTypeData = data.ModuleTypeData.FirstOrDefault(x => x.ModuleTypeName == module.ModuleTypeName);
+                if (moduleTypeData == null)
+                {
+                    moduleTypeData = new ModuleTypeSaveData()
+                    {
+                        ModuleTypeName = module.ModuleTypeName
+                    };
+                    data.ModuleTypeData.Add(moduleTypeData);
+                }
+                moduleTypeData.Modules.Add(new ModuleSaveData()
+                {
+                    ModuleName = module.ModuleName,
+                    SaveString = module.ModuleSaveString
+                });
+            }
+
+            var serializedData = JsonConvert.SerializeObject(data);
+            File.WriteAllText(fileName, serializedData);
         }
     }
 }

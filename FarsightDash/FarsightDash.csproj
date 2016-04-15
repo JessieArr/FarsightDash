@@ -129,6 +129,12 @@
     <Compile Include="ModuleManagementData.cs" />
     <Compile Include="SavableModuleData.cs" />
     <Compile Include="SaveFileHelper.cs" />
+    <Compile Include="Saving\DashboardSaveData.cs" />
+    <Compile Include="Saving\ModuleConsumerRelationship.cs" />
+    <Compile Include="Saving\ModuleSaveData.cs" />
+    <Compile Include="Saving\ModuleTypeSaveData.cs" />
+    <Compile Include="Saving\ViewWindowSaveData.cs" />
+    <Compile Include="Saving\WindowPositionSaveData.cs" />
     <Compile Include="Themes\DarkBlendAvalonDockTheme.cs" />
     <Compile Include="Themes\LeftMarginMultiplierConverter.cs" />
     <Compile Include="Themes\TreeViewItemExtensions.cs" />

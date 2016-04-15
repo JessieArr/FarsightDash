@@ -8,20 +8,19 @@ using NUnit.Framework;
 namespace FarsightDash.Test
 {
     [TestFixture]
-    public class RandomTests
+    public class SaveFileHelperTests
     {
         [Test]
-        public void Test()
+        public void JsonSaveSucceeds()
         {
             var SUT = new SaveFileHelper();
-            SUT.SaveModuleData("Z:\\Test.ini", new List<ISavableModuleData>()
+            SUT.SaveModuleDataJson("Z:\\Test.json", new List<ISavableModuleData>(){
+            new SavableModuleData()
             {
-                new SavableModuleData()
-                {
-                    ModuleTypeName = "TestType",
-                    ModuleName = "TestName",
-                    ModuleData= "TestData"
-                }
+                ModuleName = "TestName",
+                ModuleTypeName = "TestModuleType",
+                ModuleSaveString = "1 2 3"
+            }
             }, new Dictionary<string, List<string>>());
         }
     }

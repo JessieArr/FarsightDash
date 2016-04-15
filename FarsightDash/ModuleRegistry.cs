@@ -63,7 +63,7 @@ namespace FarsightDash
                 var moduleData = new SavableModuleData();
                 moduleData.ModuleTypeName = module.ModuleTypeName;
                 moduleData.ModuleName = module.ModuleName;
-                moduleData.ModuleData = module.GetSaveString();
+                moduleData.ModuleSaveString = module.GetSaveString();
                 list.Add(moduleData);
             }
 

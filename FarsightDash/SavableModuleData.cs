@@ -10,6 +10,6 @@ namespace FarsightDash
     {
         public string ModuleName { get; set; }
         public string ModuleTypeName { get; set; }
-        public string ModuleData { get; set; }
+        public string ModuleSaveString { get; set; }
     }
 }

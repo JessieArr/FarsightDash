@@ -4,6 +4,6 @@
     {
         string ModuleName { get; }
         string ModuleTypeName { get; }
-        string ModuleData { get; }
+        string ModuleSaveString { get; }
     }
 }
