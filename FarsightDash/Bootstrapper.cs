@@ -3,8 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FarsightDash.BaseModules.ModuleFactories;
-using FarsightDash.BaseModules.SavableModuleFactories;
+using FarsightDash.BaseModules.FileSystem.DirectoryWatcher;
+using FarsightDash.BaseModules.FileSystem.FileTail;
+using FarsightDash.BaseModules.Miscellaneous.Clock;
+using FarsightDash.BaseModules.Miscellaneous.CurrentTime;
+using FarsightDash.BaseModules.Miscellaneous.Date;
+using FarsightDash.BaseModules.Network;
+using FarsightDash.BaseModules.Network.ChromiumBrowser;
+using FarsightDash.BaseModules.Network.HTTPGetter;
+using FarsightDash.BaseModules.Network.HTTPStatusMonitor;
+using FarsightDash.BaseModules.Transforms.RegexFilter;
+using FarsightDash.BaseModules.Transforms.XPathFilter;
+using FarsightDash.BaseModules.Views.Label;
+using FarsightDash.BaseModules.Views.RefreshImage;
+using FarsightDash.BaseModules.Views.TextBox;
 
 namespace FarsightDash
 {

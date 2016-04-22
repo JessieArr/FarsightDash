@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FarsightDash.BaseModules.Transforms;
+using FarsightDash.BaseModules.Transforms.XPathFilter;
 using FarsightDash.Common;
 using FarsightDash.Common.Interfaces;
 using Moq;

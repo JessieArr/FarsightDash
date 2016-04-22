@@ -78,110 +78,110 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControlNameStrings.cs" />
-    <Compile Include="Controls\ChromiumBrowserPane.xaml.cs">
-      <DependentUpon>ChromiumBrowserPane.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Clock.xaml.cs">
-      <DependentUpon>Clock.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Date.xaml.cs">
-      <DependentUpon>Date.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\DirectoryWatcher.xaml.cs">
+    <Compile Include="FileSystem\DirectoryWatcher\DirectoryWatcher.xaml.cs">
       <DependentUpon>DirectoryWatcher.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\FileTail.xaml.cs">
-      <DependentUpon>FileTail.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\HTTPStatusMonitor.xaml.cs">
-      <DependentUpon>HTTPStatusMonitor.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\RefreshImage.xaml.cs">
-      <DependentUpon>RefreshImage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="DataEmitters\CurrentTimeDataEmitter.cs" />
-    <Compile Include="DataEmitters\HTTPGetter.cs" />
-    <Compile Include="DataEmitters\URLImageSource.cs" />
-    <Compile Include="IHttpWebResponseWrapper.cs" />
-    <Compile Include="ModuleFactories\HTTPGetterModuleFactory.cs" />
-    <Compile Include="ModuleFactories\XpathFilterModuleFactory.cs" />
-    <Compile Include="ModuleFactories\TextBoxModuleFactory.cs" />
-    <Compile Include="ModuleFactories\RegexFilterModuleFactory.cs" />
-    <Compile Include="ModuleFactories\LabelModuleFactory.cs" />
-    <Compile Include="ModuleFactories\CurrentTimeModuleFactory.cs" />
-    <Compile Include="ModuleFactories\DateModuleFactory.cs" />
-    <Compile Include="ModuleFactories\ClockModuleFactory.cs" />
-    <Compile Include="ModuleFactories\HTTPStatusMonitorModuleFactory.cs" />
-    <Compile Include="ModuleFactories\RefreshImageModuleFactory.cs" />
-    <Compile Include="ModuleFactories\FileTailModuleFactory.cs" />
-    <Compile Include="ModuleFactories\DirectoryWatcherModuleFactory.cs" />
-    <Compile Include="ModuleFactories\ChromiumBrowserModuleFactory.cs" />
-    <Compile Include="ModuleSetupViews\HTTPGetterSetupView.xaml.cs">
-      <DependentUpon>HTTPGetterSetupView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ModuleSetupViews\XpathFilterSetupView.xaml.cs">
-      <DependentUpon>XpathFilterSetupView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ModuleSetupViews\TextBoxSetupView.xaml.cs">
-      <DependentUpon>TextBoxSetupView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ModuleSetupViews\RegexFilterSetupView.xaml.cs">
-      <DependentUpon>RegexFilterSetupView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ModuleSetupViews\LabelSetupView.xaml.cs">
-      <DependentUpon>LabelSetupView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ModuleSetupViews\CurrentTimeSetupView.xaml.cs">
-      <DependentUpon>CurrentTimeSetupView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ModuleSetupViews\DateSetupView.xaml.cs">
-      <DependentUpon>DateSetupView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ModuleSetupViews\ClockSetupView.xaml.cs">
-      <DependentUpon>ClockSetupView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ModuleSetupViews\HTTPStatusMonitorSetupView.xaml.cs">
-      <DependentUpon>HTTPStatusMonitorSetupView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ModuleSetupViews\RefreshImageSetupView.xaml.cs">
-      <DependentUpon>RefreshImageSetupView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ModuleSetupViews\FileTailSetupView.xaml.cs">
-      <DependentUpon>FileTailSetupView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ModuleSetupViews\DirectoryWatcherSetupView.xaml.cs">
+    <Compile Include="FileSystem\DirectoryWatcher\DirectoryWatcherModuleFactory.cs" />
+    <Compile Include="FileSystem\DirectoryWatcher\DirectoryWatcherSavableFactory.cs" />
+    <Compile Include="FileSystem\DirectoryWatcher\DirectoryWatcherSetupView.xaml.cs">
       <DependentUpon>DirectoryWatcherSetupView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ModuleSetupViews\ChromiumBrowserSetupView.xaml.cs">
+    <Compile Include="FileSystem\FileTail\FileTail.xaml.cs">
+      <DependentUpon>FileTail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FileSystem\FileTail\FileTailModuleFactory.cs" />
+    <Compile Include="FileSystem\FileTail\FileTailSavableFactory.cs" />
+    <Compile Include="FileSystem\FileTail\FileTailSetupView.xaml.cs">
+      <DependentUpon>FileTailSetupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IHttpWebResponseWrapper.cs" />
+    <Compile Include="Miscellaneous\Clock\Clock.xaml.cs">
+      <DependentUpon>Clock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Miscellaneous\Clock\ClockModuleFactory.cs" />
+    <Compile Include="Miscellaneous\Clock\ClockSetupView.xaml.cs">
+      <DependentUpon>ClockSetupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Miscellaneous\CurrentTime\CurrentTimeDataEmitter.cs" />
+    <Compile Include="Miscellaneous\CurrentTime\CurrentTimeEmitterSavableFactory.cs" />
+    <Compile Include="Miscellaneous\CurrentTime\CurrentTimeModuleFactory.cs" />
+    <Compile Include="Miscellaneous\CurrentTime\CurrentTimeSetupView.xaml.cs">
+      <DependentUpon>CurrentTimeSetupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Miscellaneous\Date\Date.xaml.cs">
+      <DependentUpon>Date.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Miscellaneous\Date\DateModuleFactory.cs" />
+    <Compile Include="Miscellaneous\Date\DateSetupView.xaml.cs">
+      <DependentUpon>DateSetupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Network\ChromiumBrowser\ChromiumBrowserModuleFactory.cs" />
+    <Compile Include="Network\ChromiumBrowser\ChromiumBrowserPane.xaml.cs">
+      <DependentUpon>ChromiumBrowserPane.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Network\ChromiumBrowser\ChromiumBrowserSavableFactory.cs" />
+    <Compile Include="Network\ChromiumBrowser\ChromiumBrowserSetupView.xaml.cs">
       <DependentUpon>ChromiumBrowserSetupView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Network\HTTPGetter\HTTPGetter.cs" />
+    <Compile Include="Network\HTTPGetter\HTTPGetterModuleFactory.cs" />
+    <Compile Include="Network\HTTPGetter\HTTPGetterSavableFactory.cs" />
+    <Compile Include="Network\HTTPGetter\HTTPGetterSetupView.xaml.cs">
+      <DependentUpon>HTTPGetterSetupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Network\HTTPStatusMonitor\HTTPStatusMonitor.xaml.cs">
+      <DependentUpon>HTTPStatusMonitor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Network\HTTPStatusMonitor\HTTPStatusMonitorModuleFactory.cs" />
+    <Compile Include="Network\HTTPStatusMonitor\HTTPStatusMonitorSavableFactory.cs" />
+    <Compile Include="Network\HTTPStatusMonitor\HTTPStatusMonitorSetupView.xaml.cs">
+      <DependentUpon>HTTPStatusMonitorSetupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Network\URLImageSource\URLImageSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SavableModuleFactories\ChromiumBrowserSavableFactory.cs" />
-    <Compile Include="SavableModuleFactories\DirectoryWatcherSavableFactory.cs" />
-    <Compile Include="SavableModuleFactories\CurrentTimeEmitterSavableFactory.cs" />
-    <Compile Include="SavableModuleFactories\HTTPGetterSavableFactory.cs" />
-    <Compile Include="SavableModuleFactories\XpathFilterSavableFactory.cs" />
-    <Compile Include="SavableModuleFactories\TextBoxViewSavableFactory.cs" />
-    <Compile Include="SavableModuleFactories\LabelViewSavableFactory.cs" />
-    <Compile Include="SavableModuleFactories\RegexFilterSavableFactory.cs" />
-    <Compile Include="SavableModuleFactories\RefreshImageSavableFactory.cs" />
-    <Compile Include="SavableModuleFactories\HTTPStatusMonitorSavableFactory.cs" />
-    <Compile Include="SavableModuleFactories\FileTailSavableFactory.cs" />
-    <Compile Include="Transforms\GetDateFromDateTime.cs" />
-    <Compile Include="Transforms\GetTimeFromDateTime.cs" />
-    <Compile Include="Transforms\XpathFilter.cs" />
-    <Compile Include="Transforms\RegexFilter.cs" />
-    <Compile Include="Transforms\TimestampTransform.cs" />
-    <Compile Include="Views\ImageView.xaml.cs">
+    <Compile Include="Transforms\RegexFilter\RegexFilter.cs" />
+    <Compile Include="Transforms\RegexFilter\RegexFilterModuleFactory.cs" />
+    <Compile Include="Transforms\RegexFilter\RegexFilterSavableFactory.cs" />
+    <Compile Include="Transforms\RegexFilter\RegexFilterSetupView.xaml.cs">
+      <DependentUpon>RegexFilterSetupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Transforms\TimeParser\GetDateFromDateTime.cs" />
+    <Compile Include="Transforms\TimeParser\GetTimeFromDateTime.cs" />
+    <Compile Include="Transforms\TimestampTransform\TimestampTransform.cs" />
+    <Compile Include="Transforms\XPathFilter\XpathFilter.cs" />
+    <Compile Include="Transforms\XPathFilter\XpathFilterModuleFactory.cs" />
+    <Compile Include="Transforms\XPathFilter\XpathFilterSavableFactory.cs" />
+    <Compile Include="Transforms\XPathFilter\XpathFilterSetupView.xaml.cs">
+      <DependentUpon>XpathFilterSetupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Image\ImageView.xaml.cs">
       <DependentUpon>ImageView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TextBoxView.xaml.cs">
-      <DependentUpon>TextBoxView.xaml</DependentUpon>
+    <Compile Include="Views\Label\LabelModuleFactory.cs" />
+    <Compile Include="Views\Label\LabelSetupView.xaml.cs">
+      <DependentUpon>LabelSetupView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\LabelView.xaml.cs">
+    <Compile Include="Views\Label\LabelView.xaml.cs">
       <DependentUpon>LabelView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Label\LabelViewSavableFactory.cs" />
     <Compile Include="HttpWebResponseWrapper.cs" />
+    <Compile Include="Views\RefreshImage\RefreshImage.xaml.cs">
+      <DependentUpon>RefreshImage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RefreshImage\RefreshImageModuleFactory.cs" />
+    <Compile Include="Views\RefreshImage\RefreshImageSavableFactory.cs" />
+    <Compile Include="Views\RefreshImage\RefreshImageSetupView.xaml.cs">
+      <DependentUpon>RefreshImageSetupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TextBox\TextBoxModuleFactory.cs" />
+    <Compile Include="Views\TextBox\TextBoxSetupView.xaml.cs">
+      <DependentUpon>TextBoxSetupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TextBox\TextBoxView.xaml.cs">
+      <DependentUpon>TextBoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TextBox\TextBoxViewSavableFactory.cs" />
     <Compile Include="WebResponseHelper.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -191,95 +191,95 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Controls\ChromiumBrowserPane.xaml">
+    <Page Include="FileSystem\DirectoryWatcher\DirectoryWatcher.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\Clock.xaml">
+    <Page Include="FileSystem\DirectoryWatcher\DirectoryWatcherSetupView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\Date.xaml">
+    <Page Include="FileSystem\FileTail\FileTail.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\DirectoryWatcher.xaml">
+    <Page Include="FileSystem\FileTail\FileTailSetupView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\FileTail.xaml">
+    <Page Include="Miscellaneous\Clock\Clock.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\HTTPStatusMonitor.xaml">
+    <Page Include="Miscellaneous\Clock\ClockSetupView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\RefreshImage.xaml">
+    <Page Include="Miscellaneous\CurrentTime\CurrentTimeSetupView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ModuleSetupViews\HTTPGetterSetupView.xaml">
+    <Page Include="Miscellaneous\Date\Date.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ModuleSetupViews\XpathFilterSetupView.xaml">
+    <Page Include="Miscellaneous\Date\DateSetupView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ModuleSetupViews\TextBoxSetupView.xaml">
+    <Page Include="Network\ChromiumBrowser\ChromiumBrowserPane.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ModuleSetupViews\RegexFilterSetupView.xaml">
+    <Page Include="Network\ChromiumBrowser\ChromiumBrowserSetupView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ModuleSetupViews\LabelSetupView.xaml">
+    <Page Include="Network\HTTPGetter\HTTPGetterSetupView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ModuleSetupViews\CurrentTimeSetupView.xaml">
+    <Page Include="Network\HTTPStatusMonitor\HTTPStatusMonitor.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ModuleSetupViews\DateSetupView.xaml">
+    <Page Include="Network\HTTPStatusMonitor\HTTPStatusMonitorSetupView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ModuleSetupViews\ClockSetupView.xaml">
+    <Page Include="Transforms\RegexFilter\RegexFilterSetupView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ModuleSetupViews\HTTPStatusMonitorSetupView.xaml">
+    <Page Include="Transforms\XPathFilter\XpathFilterSetupView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ModuleSetupViews\RefreshImageSetupView.xaml">
+    <Page Include="Views\Image\ImageView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ModuleSetupViews\FileTailSetupView.xaml">
+    <Page Include="Views\Label\LabelSetupView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ModuleSetupViews\DirectoryWatcherSetupView.xaml">
+    <Page Include="Views\Label\LabelView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ModuleSetupViews\ChromiumBrowserSetupView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ImageView.xaml">
+    <Page Include="Views\RefreshImage\RefreshImage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\TextBoxView.xaml">
+    <Page Include="Views\RefreshImage\RefreshImageSetupView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\LabelView.xaml">
+    <Page Include="Views\TextBox\TextBoxSetupView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TextBox\TextBoxView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -287,6 +287,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\cef.redist.x64.3.2526.1362\build\cef.redist.x64.targets" Condition="Exists('..\packages\cef.redist.x64.3.2526.1362\build\cef.redist.x64.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

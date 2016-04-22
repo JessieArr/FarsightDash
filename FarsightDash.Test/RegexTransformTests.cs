@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FarsightDash.BaseModules.Transforms;
+using FarsightDash.BaseModules.Transforms.RegexFilter;
 using FarsightDash.Common;
 using NUnit.Framework;
 
