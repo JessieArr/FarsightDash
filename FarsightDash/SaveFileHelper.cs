@@ -47,10 +47,17 @@ namespace FarsightDash
             var relationships = GetConsumerRelationshipsFromFileJson(fileName);
             foreach (var relationship in relationships)
             {
-                var emitter = ModuleRegistry.DefaultRegistry.GetRegisteredModule(relationship.EmitterModuleName);
-                var consumer = ModuleRegistry.DefaultRegistry.GetRegisteredModule(relationship.ConsumingModuleName);
+                try
+                {
+                    var emitter = ModuleRegistry.DefaultRegistry.GetRegisteredModule(relationship.EmitterModuleName);
+                    var consumer = ModuleRegistry.DefaultRegistry.GetRegisteredModule(relationship.ConsumingModuleName);
 
-                ModuleRegistry.DefaultRegistry.ConsumeData(emitter, consumer);
+                    ModuleRegistry.DefaultRegistry.ConsumeData(emitter, consumer);
+                }
+                catch (Exception ex)
+                {
+                    FarsightLogger.DefaultLogger.LogWarning($"Failed to establish consumer relationship between {relationship.EmitterModuleName} and {relationship.ConsumingModuleName}");
+                }
             }
         }
 

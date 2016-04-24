@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Forms;
 using FarsightDash.Common.Interfaces;
-using FileTail = FarsightDash.BaseModules.FileSystem.FileTail.FileTail;
 using UserControl = System.Windows.Controls.UserControl;
 
 namespace FarsightDash.BaseModules.FileSystem.FileTail

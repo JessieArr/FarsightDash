@@ -1,5 +1,4 @@
 ﻿using FarsightDash.Common.Saving;
-using FileTail = FarsightDash.BaseModules.FileSystem.FileTail.FileTail;
 
 namespace FarsightDash.BaseModules.FileSystem.FileTail
 {

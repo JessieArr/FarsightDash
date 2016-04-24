@@ -1,18 +1,25 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text;
 using System.Threading;
-using System.Windows.Controls;
+using System.Threading.Tasks;
 using FarsightDash.Common;
 using FarsightDash.Common.Interfaces;
 using FarsightDash.Common.Saving;
 
 namespace FarsightDash.BaseModules.FileSystem.FileTail
 {
-    /// <summary>
-    /// Interaction logic for DirectoryWatcher.xaml
-    /// </summary>
-    public partial class FileTail : UserControl, ISavableModule, IDashboardView
+    public class FileTail : IDataEmitter, ISavableModule
     {
+        public string ModuleName { get; set; }
+        public string ModuleTypeName { get { return nameof(FileTail); } }
+        public string GetSaveString()
+        {
+            return _FilePath;
+        }
+
         private readonly FileSystemWatcher _Watcher;
         private readonly string _FilePath;
 
@@ -22,7 +29,6 @@ namespace FarsightDash.BaseModules.FileSystem.FileTail
             {
                 throw new FileNotFoundException(filePathToTail + " does not exist!");
             }
-            InitializeComponent();
             _FilePath = filePathToTail;
 
             var directory = Path.GetDirectoryName(filePathToTail);
@@ -39,33 +45,30 @@ namespace FarsightDash.BaseModules.FileSystem.FileTail
             _Watcher.EnableRaisingEvents = true;
 
             _Watcher.Changed += ChangeEventHandler;
-
-            UpdateFileText();
         }
 
         private void ChangeEventHandler(object sender, FileSystemEventArgs args)
         {
-            UpdateFileText();
+            EmitFileData();
         }
 
-        private void UpdateFileText()
+        private void EmitFileData()
         {
-            Dispatcher.Invoke(() =>
+            using (var fileStream = WaitForFile(_FilePath))
             {
-                using (var fileStream = WaitForFile(_FilePath))
+                if (fileStream == null)
                 {
-                    if (fileStream == null)
-                    {
-                        FarsightLogger.DefaultLogger.LogError("Failed to read from file, fileStream was null.");
-                        return;
-                    }
-                    var reader = new StreamReader(fileStream);
-                    var fileText = reader.ReadToEnd();
-                    fileStream.Close();
-                    DirectoryChangeLog.Text = fileText;
-                    DirectoryChangeLog.ScrollToEnd();
-                };
-            });
+                    FarsightLogger.DefaultLogger.LogError("Failed to read from file, fileStream was null.");
+                    return;
+                }
+                var reader = new StreamReader(fileStream);
+                var fileText = reader.ReadToEnd();
+                fileStream.Close();
+                if (EmitData != null)
+                {
+                    EmitData(this, new EmitDataHandlerArgs(fileText));
+                }
+            };
         }
 
         private FileStream WaitForFile(string fullPath)
@@ -97,18 +100,11 @@ namespace FarsightDash.BaseModules.FileSystem.FileTail
             return null;
         }
 
-        public string ModuleName { get; set; }
+        public event EmitDataHandler EmitData;
 
-        public string ModuleTypeName
+        public void Initialize()
         {
-            get { return nameof(FileTail); }
+            EmitFileData();
         }
-
-        public string GetSaveString()
-        {
-            return _FilePath;
-        }
-
-        public UserControl Control { get { return this; } }
     }
 }

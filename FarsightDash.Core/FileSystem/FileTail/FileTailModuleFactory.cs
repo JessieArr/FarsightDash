@@ -7,7 +7,7 @@ namespace FarsightDash.BaseModules.FileSystem.FileTail
     {
         public string ModuleTypeName
         {
-            get { return "File Tail"; }
+            get { return nameof(FileTail); }
         }
 
         public IModuleSetupView GetNewModuleSetupView(IFarsightModuleRegistry moduleRegistry)

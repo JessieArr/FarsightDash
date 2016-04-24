@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FarsightDash.Common;
 using FarsightDash.Common.Interfaces;
 using FarsightDash.Common.Saving;
 
@@ -47,7 +48,8 @@ namespace FarsightDash
         {
             if (!_RegisteredSavableFactories.ContainsKey(factoryName))
             {
-                throw new Exception($"Factory for control: {factoryName} is not registered!");
+                var errorString = $"Factory for control: {factoryName} is not registered!";
+                throw new Exception(errorString);
             }
             return _RegisteredSavableFactories[factoryName];
         }

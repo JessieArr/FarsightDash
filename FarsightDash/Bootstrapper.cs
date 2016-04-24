@@ -15,6 +15,7 @@ using FarsightDash.BaseModules.Network.HTTPStatusMonitor;
 using FarsightDash.BaseModules.Transforms.RegexFilter;
 using FarsightDash.BaseModules.Transforms.XPathFilter;
 using FarsightDash.BaseModules.Views.Label;
+using FarsightDash.BaseModules.Views.LineHighlight;
 using FarsightDash.BaseModules.Views.RefreshImage;
 using FarsightDash.BaseModules.Views.TextBox;
 
@@ -44,6 +45,7 @@ namespace FarsightDash
             registry.RegisterModuleFactory(new XpathFilterModuleFactory());
             registry.RegisterModuleFactory(new HTTPGetterModuleFactory());
             registry.RegisterModuleFactory(new TextBoxModuleFactory());
+            registry.RegisterModuleFactory(new LineHighlightModuleFactory());
         }
 
         private static void RegisterSavableModuleFactories(IModuleFactoryRegistry registry)
@@ -59,6 +61,7 @@ namespace FarsightDash
             registry.RegisterSavableModuleFactory(new XpathFilterSavableFactory());
             registry.RegisterSavableModuleFactory(new HTTPGetterSavableFactory());
             registry.RegisterSavableModuleFactory(new TextBoxViewSavableFactory());
+            registry.RegisterSavableModuleFactory(new LineHighlightSavableFactory());
         }
     }
 }
