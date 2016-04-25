@@ -13,6 +13,7 @@ using FarsightDash.BaseModules.Network;
 using FarsightDash.BaseModules.Network.ChromiumBrowser;
 using FarsightDash.BaseModules.Network.HTTPGetter;
 using FarsightDash.BaseModules.Network.HTTPStatusMonitor;
+using FarsightDash.BaseModules.Network.WifiNetworks;
 using FarsightDash.BaseModules.Transforms.RegexFilter;
 using FarsightDash.BaseModules.Transforms.XPathFilter;
 using FarsightDash.BaseModules.Views.Label;
@@ -48,6 +49,7 @@ namespace FarsightDash
             registry.RegisterModuleFactory(new TextBoxModuleFactory());
             registry.RegisterModuleFactory(new LineHighlightModuleFactory());
             registry.RegisterModuleFactory(new ProcessListModuleFactory());
+            registry.RegisterModuleFactory(new WifiNetworksModuleFactory());
         }
 
         private static void RegisterSavableModuleFactories(IModuleFactoryRegistry registry)
@@ -65,6 +67,7 @@ namespace FarsightDash
             registry.RegisterSavableModuleFactory(new TextBoxViewSavableFactory());
             registry.RegisterSavableModuleFactory(new LineHighlightSavableFactory());
             registry.RegisterSavableModuleFactory(new ProcessListSavableFactory());
+            registry.RegisterSavableModuleFactory(new WifiNetworksSavableFactory());
         }
     }
 }

@@ -53,6 +53,10 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ManagedWifi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\managedwifi.1.1.0\lib\net20\ManagedWifi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -162,6 +166,12 @@
       <DependentUpon>HTTPStatusMonitorSetupView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Network\URLImageSource\URLImageSource.cs" />
+    <Compile Include="Network\WifiNetworks\WifiNetworks.cs" />
+    <Compile Include="Network\WifiNetworks\WifiNetworksModuleFactory.cs" />
+    <Compile Include="Network\WifiNetworks\WifiNetworksSavableFactory.cs" />
+    <Compile Include="Network\WifiNetworks\WifiNetworksSetupView.xaml.cs">
+      <DependentUpon>WifiNetworksSetupView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Transforms\RegexFilter\RegexFilter.cs" />
     <Compile Include="Transforms\RegexFilter\RegexFilterModuleFactory.cs" />
@@ -279,6 +289,10 @@
     <Page Include="Network\HTTPStatusMonitor\HTTPStatusMonitorSetupView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Network\WifiNetworks\WifiNetworksSetupView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Transforms\RegexFilter\RegexFilterSetupView.xaml">
       <Generator>MSBuild:Compile</Generator>
