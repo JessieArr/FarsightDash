@@ -54,7 +54,7 @@ namespace FarsightDash
 
                     ModuleRegistry.DefaultRegistry.ConsumeData(emitter, consumer);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     FarsightLogger.DefaultLogger.LogWarning($"Failed to establish consumer relationship between {relationship.EmitterModuleName} and {relationship.ConsumingModuleName}");
                 }
