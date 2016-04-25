@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FarsightDash.BaseModules.FileSystem.DirectoryWatcher;
 using FarsightDash.BaseModules.FileSystem.FileTail;
+using FarsightDash.BaseModules.LocalMachine.ProcessList;
 using FarsightDash.BaseModules.Miscellaneous.Clock;
 using FarsightDash.BaseModules.Miscellaneous.CurrentTime;
 using FarsightDash.BaseModules.Miscellaneous.Date;
@@ -46,6 +47,7 @@ namespace FarsightDash
             registry.RegisterModuleFactory(new HTTPGetterModuleFactory());
             registry.RegisterModuleFactory(new TextBoxModuleFactory());
             registry.RegisterModuleFactory(new LineHighlightModuleFactory());
+            registry.RegisterModuleFactory(new ProcessListModuleFactory());
         }
 
         private static void RegisterSavableModuleFactories(IModuleFactoryRegistry registry)
@@ -62,6 +64,7 @@ namespace FarsightDash
             registry.RegisterSavableModuleFactory(new HTTPGetterSavableFactory());
             registry.RegisterSavableModuleFactory(new TextBoxViewSavableFactory());
             registry.RegisterSavableModuleFactory(new LineHighlightSavableFactory());
+            registry.RegisterSavableModuleFactory(new ProcessListSavableFactory());
         }
     }
 }

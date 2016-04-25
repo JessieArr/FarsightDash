@@ -113,6 +113,12 @@
       <DependentUpon>FileTailSetupView.xaml</DependentUpon>
     </Compile>
     <Compile Include="IHttpWebResponseWrapper.cs" />
+    <Compile Include="LocalMachine\ProcessList\ProcessList.cs" />
+    <Compile Include="LocalMachine\ProcessList\ProcessListModuleFactory.cs" />
+    <Compile Include="LocalMachine\ProcessList\ProcessListSavableFactory.cs" />
+    <Compile Include="LocalMachine\ProcessList\ProcessListSetupView.xaml.cs">
+      <DependentUpon>ProcessListSetupView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Miscellaneous\Clock\Clock.xaml.cs">
       <DependentUpon>Clock.xaml</DependentUpon>
     </Compile>
@@ -227,6 +233,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="FileSystem\FileTail\FileTailSetupView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LocalMachine\ProcessList\ProcessListSetupView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
