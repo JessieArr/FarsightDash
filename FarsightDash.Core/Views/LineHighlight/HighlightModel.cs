@@ -10,7 +10,7 @@ namespace FarsightDash.BaseModules.Views.LineHighlight
 {
     public class HighlightModel
     {
-        public Regex Regex { get; set; }
+        public string RegexPattern { get; set; }
         public SolidColorBrush ForegroundColor { get; set; }
         public SolidColorBrush BackgroundColor { get; set; }
     }

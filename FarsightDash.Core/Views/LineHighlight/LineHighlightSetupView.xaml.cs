@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 using FarsightDash.Common.Interfaces;
-using TextBoxView = FarsightDash.BaseModules.Views.TextBox.TextBoxView;
-using UserControl = System.Windows.Controls.UserControl;
+using Xceed.Wpf.Toolkit;
 
 namespace FarsightDash.BaseModules.Views.LineHighlight
 {
@@ -11,9 +16,20 @@ namespace FarsightDash.BaseModules.Views.LineHighlight
     /// </summary>
     public partial class LineHighlightSetupView : UserControl, IModuleSetupView
     {
+        private ObservableCollection<HighlightModel> _Highlights; 
         public LineHighlightSetupView()
         {
             InitializeComponent();
+            _Highlights = new ObservableCollection<HighlightModel>()
+            {
+                new HighlightModel()
+                {
+                    RegexPattern = "",
+                    ForegroundColor = new SolidColorBrush(Colors.White),
+                    BackgroundColor = new SolidColorBrush(Colors.White)
+                }
+            };
+            MainGrid.ItemsSource = _Highlights;
         }
 
         public UserControl Control
@@ -23,22 +39,26 @@ namespace FarsightDash.BaseModules.Views.LineHighlight
 
         public bool IsEnteredUserDataValid()
         {
-            return HighlightText.Text.Length > 0 && ForegroundColor.SelectedColor.HasValue 
-                && BackgroundColor.SelectedColor.HasValue;
+            return true;
         }
 
         public List<IFarsightDashModule> CreateModules(IFarsightModuleRegistry moduleRegistry)
         {
-            if (!ForegroundColor.SelectedColor.HasValue || !BackgroundColor.SelectedColor.HasValue)
-            {
-                throw new Exception("Colors cannot be null.");
-            }
-            var module = new LineHighlight(HighlightText.Text, 
-                ForegroundColor.SelectedColor.Value, BackgroundColor.SelectedColor.Value);
+            var module = new LineHighlight(_Highlights.ToList());
             return new List<IFarsightDashModule>()
             {
                 module
             };
+        }
+
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            _Highlights.Add(new HighlightModel()
+            {
+                RegexPattern = "",
+                ForegroundColor = new SolidColorBrush(Colors.White),
+                BackgroundColor = new SolidColorBrush(Colors.White)
+            });
         }
     }
 }

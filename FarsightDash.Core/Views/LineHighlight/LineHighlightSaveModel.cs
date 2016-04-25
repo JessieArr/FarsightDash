@@ -9,8 +9,6 @@ namespace FarsightDash.BaseModules.Views.LineHighlight
 {
     public class LineHighlightSaveModel
     {
-        public string TextToHighlight;
-        public Color ForegroundColor;
-        public Color BackgroundColor;
+        public List<HighlightModel> HighlightValues; 
     }
 }

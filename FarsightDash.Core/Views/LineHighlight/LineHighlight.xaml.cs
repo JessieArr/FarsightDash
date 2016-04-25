@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -17,24 +18,22 @@ namespace FarsightDash.BaseModules.Views.LineHighlight
     /// </summary>
     public partial class LineHighlight : UserControl, IDataConsumer, IDashboardView, ISavableModule
     {
-        private string _TextToHighlight;
-        private Color _ForegroundColor;
-        private Color _BackgroundColor;
-
-        public LineHighlight(string textToHighlight, Color foregroundColor, Color backgroundColor)
-        {
-            InitializeComponent();
-            _TextToHighlight = textToHighlight;
-            _ForegroundColor = foregroundColor;
-            _BackgroundColor = backgroundColor;
-        }
+        private List<HighlightModel> _Highlights;
 
         public LineHighlight(LineHighlightSaveModel model)
         {
             InitializeComponent();
-            _TextToHighlight = model.TextToHighlight;
-            _ForegroundColor = model.ForegroundColor;
-            _BackgroundColor = model.BackgroundColor;
+            _Highlights = model.HighlightValues;
+            if (_Highlights == null)
+            {
+                _Highlights = new List<HighlightModel>();
+            }
+        }
+
+        public LineHighlight(List<HighlightModel> highlights)
+        {
+            InitializeComponent();
+            _Highlights = highlights;
         }
 
         public EmitDataHandler DataHandler
@@ -55,10 +54,15 @@ namespace FarsightDash.BaseModules.Views.LineHighlight
                                 Margin = new Thickness(0, 0, 0, 0),
                                 Padding = new Thickness(0, 0, 0, 0)
                             };
-                            if (line.IndexOf(_TextToHighlight, StringComparison.OrdinalIgnoreCase) >= 0)
+                            foreach (var highlight in _Highlights)
                             {
-                                lineLabel.Background = new SolidColorBrush(_BackgroundColor);
-                                lineLabel.Foreground = new SolidColorBrush(_ForegroundColor);
+                                var regex = new Regex(highlight.RegexPattern);
+                                var match = regex.Match(line);
+                                if (match.Success)
+                                {
+                                    lineLabel.Background = highlight.BackgroundColor;
+                                    lineLabel.Foreground = highlight.ForegroundColor;
+                                }
                             }
                             ContentPanel.Children.Add(lineLabel);
                         }
@@ -77,23 +81,11 @@ namespace FarsightDash.BaseModules.Views.LineHighlight
         {
             var model = new LineHighlightSaveModel()
             {
-                TextToHighlight = _TextToHighlight,
-                ForegroundColor = _ForegroundColor,
-                BackgroundColor = _BackgroundColor
+                HighlightValues = _Highlights
             };
             return JsonConvert.SerializeObject(model);
         }
 
         public UserControl Control { get { return this; } }
-
-        private Stream GenerateStreamFromString(string s)
-        {
-            MemoryStream stream = new MemoryStream();
-            StreamWriter writer = new StreamWriter(stream);
-            writer.Write(s);
-            writer.Flush();
-            stream.Position = 0;
-            return stream;
-        }
     }
 }

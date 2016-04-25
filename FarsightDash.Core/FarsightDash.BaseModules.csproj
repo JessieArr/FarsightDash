@@ -200,6 +200,7 @@
     </Compile>
     <Compile Include="Views\Label\LabelViewSavableFactory.cs" />
     <Compile Include="HttpWebResponseWrapper.cs" />
+    <Compile Include="Views\LineHighlight\HighlightModel.cs" />
     <Compile Include="Views\LineHighlight\LineHighlightSaveModel.cs" />
     <Compile Include="Views\RefreshImage\RefreshImage.xaml.cs">
       <DependentUpon>RefreshImage.xaml</DependentUpon>
