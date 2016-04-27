@@ -165,6 +165,12 @@
     <Compile Include="Network\HTTPStatusMonitor\HTTPStatusMonitorSetupView.xaml.cs">
       <DependentUpon>HTTPStatusMonitorSetupView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Network\Ping\Ping.cs" />
+    <Compile Include="Network\Ping\PingModuleFactory.cs" />
+    <Compile Include="Network\Ping\PingModuleSavableFactory.cs" />
+    <Compile Include="Network\Ping\PingModuleSetupView.xaml.cs">
+      <DependentUpon>PingModuleSetupView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Network\URLImageSource\URLImageSource.cs" />
     <Compile Include="Network\WifiNetworks\WifiNetworks.cs" />
     <Compile Include="Network\WifiNetworks\WifiNetworksModuleFactory.cs" />
@@ -290,6 +296,10 @@
     <Page Include="Network\HTTPStatusMonitor\HTTPStatusMonitorSetupView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Network\Ping\PingModuleSetupView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Network\WifiNetworks\WifiNetworksSetupView.xaml">
       <SubType>Designer</SubType>
