@@ -22,7 +22,7 @@ namespace FarsightDash
             AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
             {
                 var exception = (Exception)args.ExceptionObject;
-                FarsightLogger.DefaultLogger.LogFatal(exception.Message);
+                FarsightLogger.DefaultLogger.LogFatal($"{exception.Message}{Environment.NewLine}{exception.StackTrace}");
 
                 Application.Current.Shutdown(-1);
             };
