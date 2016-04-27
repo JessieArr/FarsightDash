@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
@@ -47,7 +48,23 @@ namespace FarsightDash.BaseModules.Network.Ping
                 {
                     var ping = new System.Net.NetworkInformation.Ping();
                     var pingResult = ping.Send(_URL);
-                    var outString = $"Ping: {pingResult.Address} {pingResult.RoundtripTime}";
+                    var outString = "";
+                    if (pingResult == null)
+                    {
+                        outString = "Unknown Ping Error";
+                        FarsightLogger.DefaultLogger.LogWarning(outString);
+                    }
+                    else
+                    {
+                        if (pingResult.Status == IPStatus.Success)
+                        {
+                            outString = $"Reply from {pingResult.Address}: time={pingResult.RoundtripTime}ms";
+                        }
+                        else
+                        {
+                            outString = $"Error: {pingResult.Status}";
+                        }
+                    }
 
                     EmitData(this, new EmitDataHandlerArgs(outString));
                 }
