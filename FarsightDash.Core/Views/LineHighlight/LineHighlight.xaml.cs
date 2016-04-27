@@ -66,6 +66,8 @@ namespace FarsightDash.BaseModules.Views.LineHighlight
                             }
                             ContentPanel.Children.Add(lineLabel);
                         }
+
+                        ContentScrollViewer.ScrollToBottom();
                     });
                 };
             }
