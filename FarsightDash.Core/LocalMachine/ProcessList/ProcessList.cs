@@ -40,11 +40,22 @@ namespace FarsightDash.BaseModules.LocalMachine.ProcessList
         private void EmitProcessData()
         {
             var processes = Process.GetProcesses();
-            var sortedProcesses = processes.OrderBy(x => x.ProcessName);
             var outString = "";
+            var sortedApplications = processes.Where(x => !String.IsNullOrEmpty(x.MainWindowTitle)).OrderBy(x => x.MainWindowTitle);
+            var sortedProcesses = processes.Where(x => String.IsNullOrEmpty(x.MainWindowTitle)).OrderBy(x => x.ProcessName);
+
+            foreach (var application in sortedApplications)
+            {
+                var name = application.MainWindowTitle;
+                outString += $"{name}, {GetSizeSuffix(application.WorkingSet64)}, {application.Threads.Count} Threads{Environment.NewLine}";
+            }
+
+            outString += Environment.NewLine;
+
             foreach (var process in sortedProcesses)
             {
-                outString += $"{process.ProcessName}, {GetSizeSuffix(process.WorkingSet64)}, {process.Threads.Count} Threads{Environment.NewLine}";
+                var name = process.ProcessName;
+                outString += $"{name}, {GetSizeSuffix(process.WorkingSet64)}, {process.Threads.Count} Threads{Environment.NewLine}";
             }
 
             if (EmitData != null)
