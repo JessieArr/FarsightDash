@@ -10,6 +10,8 @@ using FarsightDash.BaseModules.Miscellaneous.Clock;
 using FarsightDash.BaseModules.Miscellaneous.Conditional;
 using FarsightDash.BaseModules.Miscellaneous.CurrentTime;
 using FarsightDash.BaseModules.Miscellaneous.Date;
+using FarsightDash.BaseModules.Miscellaneous.DebugModule;
+using FarsightDash.BaseModules.Miscellaneous.PopUp;
 using FarsightDash.BaseModules.Network;
 using FarsightDash.BaseModules.Network.ChromiumBrowser;
 using FarsightDash.BaseModules.Network.HTTPGetter;
@@ -54,6 +56,8 @@ namespace FarsightDash
             registry.RegisterModuleFactory(new WifiNetworksModuleFactory());
             registry.RegisterModuleFactory(new PingModuleFactory());
             registry.RegisterModuleFactory(new ConditionalModuleFactory());
+            registry.RegisterModuleFactory(new DebugModuleFactory());
+            registry.RegisterModuleFactory(new PopUpModuleFactory());
         }
 
         private static void RegisterSavableModuleFactories(IModuleFactoryRegistry registry)
@@ -74,6 +78,8 @@ namespace FarsightDash
             registry.RegisterSavableModuleFactory(new WifiNetworksSavableFactory());
             registry.RegisterSavableModuleFactory(new PingModuleSavableFactory());
             registry.RegisterSavableModuleFactory(new ConditionalSavableFactory());
+            registry.RegisterSavableModuleFactory(new DebugModuleSavableFactory());
+            registry.RegisterSavableModuleFactory(new PopUpSavableFactory());
         }
     }
 }

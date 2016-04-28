@@ -130,6 +130,20 @@
     <Compile Include="Miscellaneous\Clock\ClockSetupView.xaml.cs">
       <DependentUpon>ClockSetupView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Miscellaneous\DebugModule\DebugModule.xaml.cs">
+      <DependentUpon>DebugModule.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Miscellaneous\DebugModule\DebugModuleFactory.cs" />
+    <Compile Include="Miscellaneous\DebugModule\DebugModuleSavableFactory.cs" />
+    <Compile Include="Miscellaneous\DebugModule\DebugModuleSetupView.xaml.cs">
+      <DependentUpon>DebugModuleSetupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Miscellaneous\PopUp\PopUp.cs" />
+    <Compile Include="Miscellaneous\PopUp\PopUpModuleFactory.cs" />
+    <Compile Include="Miscellaneous\PopUp\PopUpSavableFactory.cs" />
+    <Compile Include="Miscellaneous\PopUp\PopUpSetupView.xaml.cs">
+      <DependentUpon>PopUpSetupView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Miscellaneous\CurrentTime\CurrentTimeDataEmitter.cs" />
     <Compile Include="Miscellaneous\CurrentTime\CurrentTimeEmitterSavableFactory.cs" />
     <Compile Include="Miscellaneous\CurrentTime\CurrentTimeModuleFactory.cs" />
@@ -268,6 +282,18 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Miscellaneous\Clock\ClockSetupView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Miscellaneous\DebugModule\DebugModule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Miscellaneous\DebugModule\DebugModuleSetupView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Miscellaneous\PopUp\PopUpSetupView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
