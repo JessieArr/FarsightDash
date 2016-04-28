@@ -143,6 +143,12 @@
     <Compile Include="Miscellaneous\Date\DateSetupView.xaml.cs">
       <DependentUpon>DateSetupView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Miscellaneous\Conditional\Conditional.cs" />
+    <Compile Include="Miscellaneous\Conditional\ConditionalModuleFactory.cs" />
+    <Compile Include="Miscellaneous\Conditional\ConditionalSavableFactory.cs" />
+    <Compile Include="Miscellaneous\Conditional\ConditionalSetupView.xaml.cs">
+      <DependentUpon>ConditionalSetupView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Network\ChromiumBrowser\ChromiumBrowserModuleFactory.cs" />
     <Compile Include="Network\ChromiumBrowser\ChromiumBrowserPane.xaml.cs">
       <DependentUpon>ChromiumBrowserPane.xaml</DependentUpon>
@@ -274,6 +280,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Miscellaneous\Date\DateSetupView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Miscellaneous\Conditional\ConditionalSetupView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

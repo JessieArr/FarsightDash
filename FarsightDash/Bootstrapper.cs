@@ -7,6 +7,7 @@ using FarsightDash.BaseModules.FileSystem.DirectoryWatcher;
 using FarsightDash.BaseModules.FileSystem.FileTail;
 using FarsightDash.BaseModules.LocalMachine.ProcessList;
 using FarsightDash.BaseModules.Miscellaneous.Clock;
+using FarsightDash.BaseModules.Miscellaneous.Conditional;
 using FarsightDash.BaseModules.Miscellaneous.CurrentTime;
 using FarsightDash.BaseModules.Miscellaneous.Date;
 using FarsightDash.BaseModules.Network;
@@ -52,6 +53,7 @@ namespace FarsightDash
             registry.RegisterModuleFactory(new ProcessListModuleFactory());
             registry.RegisterModuleFactory(new WifiNetworksModuleFactory());
             registry.RegisterModuleFactory(new PingModuleFactory());
+            registry.RegisterModuleFactory(new ConditionalModuleFactory());
         }
 
         private static void RegisterSavableModuleFactories(IModuleFactoryRegistry registry)
@@ -71,6 +73,7 @@ namespace FarsightDash
             registry.RegisterSavableModuleFactory(new ProcessListSavableFactory());
             registry.RegisterSavableModuleFactory(new WifiNetworksSavableFactory());
             registry.RegisterSavableModuleFactory(new PingModuleSavableFactory());
+            registry.RegisterSavableModuleFactory(new ConditionalSavableFactory());
         }
     }
 }
