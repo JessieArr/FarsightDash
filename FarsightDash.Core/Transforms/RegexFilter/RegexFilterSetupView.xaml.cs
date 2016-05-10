@@ -27,7 +27,27 @@ namespace FarsightDash.BaseModules.Transforms.RegexFilter
 
         public List<IFarsightDashModule> CreateModules(IFarsightModuleRegistry moduleRegistry)
         {
-            var filter = new RegexFilter(RegexFilterTextBox.Text);
+            RegexReturnTypeEnum returnType = RegexReturnTypeEnum.FirstMatch;
+            if (ReturnFirstMatch.IsChecked == true)
+            {
+                returnType = RegexReturnTypeEnum.FirstMatch;
+            }
+            if (ReturnLastMatch.IsChecked == true)
+            {
+                returnType = RegexReturnTypeEnum.LastMatch;
+            }
+            if (ReturnAllMatches.IsChecked == true)
+            {
+                returnType = RegexReturnTypeEnum.AllMatches;
+            }
+
+            string separator = Environment.NewLine;
+            if (SeparateWithText.IsChecked == true)
+            {
+                separator = SeparatorText.Text;
+            }
+
+            var filter = new RegexFilter(RegexFilterTextBox.Text, returnType, separator);
             return new List<IFarsightDashModule>()
             {
                 filter

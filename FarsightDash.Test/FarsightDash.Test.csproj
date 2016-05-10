@@ -70,6 +70,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HTTPGetterTests.cs" />
     <Compile Include="RegexTransformTests.cs" />
+    <Compile Include="TestSandbox.cs" />
     <Compile Include="XpathFilterTests.cs" />
   </ItemGroup>
   <ItemGroup>

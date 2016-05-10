@@ -16,7 +16,7 @@ namespace FarsightDash.Test
         [Test]
         public void RegexTransform_MatchesInteger()
         {
-            var SUT = new RegexFilter("\\d+");
+            var SUT = new RegexFilter("\\d+", RegexReturnTypeEnum.FirstMatch, "");
 
             string result = null;
             SUT.EmitData += (sender, args) =>
@@ -31,7 +31,7 @@ namespace FarsightDash.Test
         [Test]
         public void RegexTransform_MatchesFirstInteger()
         {
-            var SUT = new RegexFilter("\\d+");
+            var SUT = new RegexFilter("\\d+", RegexReturnTypeEnum.FirstMatch, "");
 
             string result = null;
             SUT.EmitData += (sender, args) =>

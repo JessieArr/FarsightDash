@@ -61,6 +61,10 @@
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="OpenHardwareMonitorLib, Version=0.7.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenHardwareMonitor.0.7.1\lib\net40\OpenHardwareMonitorLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -198,6 +202,7 @@
     <Compile Include="Network\WifiNetworks\WifiNetworksSetupView.xaml.cs">
       <DependentUpon>WifiNetworksSetupView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OpenHardwareTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Transforms\RegexFilter\RegexFilter.cs" />
     <Compile Include="Transforms\RegexFilter\RegexFilterModuleFactory.cs" />
@@ -205,6 +210,7 @@
     <Compile Include="Transforms\RegexFilter\RegexFilterSetupView.xaml.cs">
       <DependentUpon>RegexFilterSetupView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Transforms\RegexFilter\RegexReturnTypeEnum.cs" />
     <Compile Include="Transforms\TimeParser\GetDateFromDateTime.cs" />
     <Compile Include="Transforms\TimeParser\GetTimeFromDateTime.cs" />
     <Compile Include="Transforms\TimestampTransform\TimestampTransform.cs" />

@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using FarsightDash.BaseModules;
 using FarsightDash.Common;
 
 namespace FarsightDash
@@ -39,6 +40,8 @@ namespace FarsightDash
             };
 
             Bootstrapper.InitializeApplication();
+
+            //var x = new OpenHardwareTest();
         }
 
         protected override void OnExit(ExitEventArgs e)

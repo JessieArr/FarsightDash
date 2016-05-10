@@ -14,6 +14,7 @@ namespace FarsightDash
         {
             var newAnchorable = new LayoutAnchorable();
             newAnchorable.Content = view.Control;
+            newAnchorable.AutoHideMinHeight = 15;
 
             newAnchorable.Title = view.ModuleName;
             newAnchorable.Hiding += (o, args) =>

@@ -29,6 +29,7 @@ namespace FarsightDash
         {
             InitializeComponent();
             DockHelper.RootAnchorablePane = AnchorablePane;
+            AnchorablePane.DockMinHeight = 15;
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
             _SaveFileHelper = new SaveFileHelper();
