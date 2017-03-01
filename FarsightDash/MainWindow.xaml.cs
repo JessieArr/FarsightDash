@@ -38,7 +38,7 @@ namespace FarsightDash
             }
 
             var temp = dockingManager.Layout.RootPanel.Children.First();
-            var cast = temp.Descendents().First() as LayoutAnchorablePane;
+            var cast = temp.Descendents().First(x => x is LayoutAnchorablePane) as LayoutAnchorablePane;
             DockHelper.RootAnchorablePane = cast;
 
             _SaveFileHelper = new SaveFileHelper();
