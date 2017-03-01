@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:avalonDock="http://schemas.xceed.com/wpf/xaml/avalondock"
         xmlns:themes="clr-namespace:FarsightDash.Themes"
+        xmlns:farsightdash="clr-namespace:FarsightDash"
         Title="Farsight Dash" Height="800" Width="1280"
         KeyDown="Window_KeyDown">
     <Grid>
@@ -25,6 +26,9 @@
         </Menu>
 
         <avalonDock:DockingManager x:Name="dockingManager" Grid.Row="1">
+            <avalonDock:DockingManager.LayoutUpdateStrategy>
+                <farsightdash:LayoutUpdateStrategy/>
+            </avalonDock:DockingManager.LayoutUpdateStrategy>
             <avalonDock:LayoutRoot x:Name="LayoutRoot">
                 <avalonDock:LayoutPanel Orientation="Horizontal">
                     <avalonDock:LayoutAnchorablePaneGroup DockWidth="150" Orientation="Vertical">

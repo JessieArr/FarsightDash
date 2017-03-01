@@ -61,6 +61,12 @@ namespace FarsightDash
             }
         }
 
+        public ISavableModule GetSavedModuleFromFile(string moduleName)
+        {
+            var savedModules = GetSavedModulesFromFileJson("Autosave.json");
+            return savedModules.FirstOrDefault(x => x.ModuleName == moduleName);
+        }
+
         public List<ISavableModule> GetSavedModulesFromFileJson(string fileName)
         {
             var list = new List<ISavableModule>();

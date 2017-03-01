@@ -17,6 +17,7 @@ namespace FarsightDash
             newAnchorable.AutoHideMinHeight = 15;
 
             newAnchorable.Title = view.ModuleName;
+            newAnchorable.ContentId = view.ModuleName;
             newAnchorable.Hiding += (o, args) =>
             {
                 ModuleRegistry.DefaultRegistry.UnregisterModule(view);

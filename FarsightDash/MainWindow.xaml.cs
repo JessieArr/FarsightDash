@@ -28,20 +28,30 @@ namespace FarsightDash
         public MainWindow()
         {
             InitializeComponent();
-            DockHelper.RootAnchorablePane = AnchorablePane;
+            //DockHelper.RootAnchorablePane = AnchorablePane;
             AnchorablePane.DockMinHeight = 15;
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
-            _SaveFileHelper = new SaveFileHelper();
-            if (File.Exists("Autosave.json"))
+            if (SaveLayoutHelper.LayoutSaveExists())
             {
-                _SaveFileHelper.LoadSavedModulesFromFile("Autosave.json");
+                SaveLayoutHelper.LoadLayout(dockingManager);
             }
+
+            var temp = dockingManager.Layout.RootPanel.Children.First();
+            var cast = temp.Descendents().First() as LayoutAnchorablePane;
+            DockHelper.RootAnchorablePane = cast;
+
+            _SaveFileHelper = new SaveFileHelper();
+            //if (File.Exists("Autosave.json"))
+            //{
+            //    _SaveFileHelper.LoadSavedModulesFromFile("Autosave.json");
+            //}
         }
 
         private void ExitMenuItemClicked(object sender, RoutedEventArgs e)
         {
             _SaveFileHelper.Autosave();
+            SaveLayoutHelper.SaveLayout(dockingManager);
 
             Application.Current.Shutdown();
         }

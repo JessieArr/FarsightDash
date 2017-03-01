@@ -121,6 +121,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AnchorableViewService.cs" />
+    <Compile Include="LayoutUpdateStrategy.cs" />
     <Compile Include="ManageControlsWindow.xaml.cs">
       <DependentUpon>ManageControlsWindow.xaml</DependentUpon>
     </Compile>
@@ -129,6 +130,7 @@
     <Compile Include="ModuleManagementData.cs" />
     <Compile Include="SavableModuleData.cs" />
     <Compile Include="SaveFileHelper.cs" />
+    <Compile Include="SaveLayoutHelper.cs" />
     <Compile Include="Saving\DashboardSaveData.cs" />
     <Compile Include="Saving\ModuleConsumerRelationship.cs" />
     <Compile Include="Saving\ModuleSaveData.cs" />
