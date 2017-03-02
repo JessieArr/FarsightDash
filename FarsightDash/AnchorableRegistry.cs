@@ -34,6 +34,7 @@ namespace FarsightDash
                     {
                         ModuleRegistry.DefaultRegistry.UnregisterModule(view);
                     }
+                    anchorable.Close();
                     args.Cancel = true;
                 }
             };

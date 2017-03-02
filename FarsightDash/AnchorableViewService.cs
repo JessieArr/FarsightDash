@@ -18,10 +18,6 @@ namespace FarsightDash
 
             newAnchorable.Title = view.ModuleName;
             newAnchorable.ContentId = view.ModuleName;
-            newAnchorable.Hiding += (o, args) =>
-            {
-                ModuleRegistry.DefaultRegistry.UnregisterModule(view);
-            };
 
             return newAnchorable;
         }

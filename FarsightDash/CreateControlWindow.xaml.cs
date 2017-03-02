@@ -46,6 +46,11 @@ namespace FarsightDash
                     var anchorableService = new AnchorableViewService();
                     var newAnchorable = anchorableService.GetAnchorableFromView(view);
 
+                    newAnchorable.Hiding += (obj, args) =>
+                    {
+                        ModuleRegistry.DefaultRegistry.UnregisterModule(view);
+                    };
+
                     DockHelper.RootAnchorablePane.Children.Add(newAnchorable);
                 }
 

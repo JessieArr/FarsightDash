@@ -44,10 +44,6 @@ namespace FarsightDash
                         var anchorable = AnchorableRegistry.DefaultRegistry.GetRegisteredAnchorable(module.ModuleName);
                         var view = module as IDashboardView;
                         anchorable.Content = view.Control;
-                        anchorable.Hiding += (obj, args) =>
-                        {
-                            ModuleRegistry.DefaultRegistry.UnregisterModule(view);
-                        };
                     }
                 }
             }
