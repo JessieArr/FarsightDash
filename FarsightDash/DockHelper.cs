@@ -11,5 +11,6 @@ namespace FarsightDash
     public static class DockHelper
     {
         public static LayoutAnchorablePane RootAnchorablePane { get; set; }
+        public static DockingManager DockingManager { get; set; }
     }
 }

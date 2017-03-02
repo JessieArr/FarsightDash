@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FarsightDash.Common.Interfaces;
 using Xceed.Wpf.AvalonDock.Layout;
 
 namespace FarsightDash
@@ -19,6 +20,23 @@ namespace FarsightDash
             {
                 throw new Exception($"Anchorable {newAnchorable.Title} already registered!");
             }
+
+            newAnchorable.Hiding += (sender, args) =>
+            {
+                var anchorable = sender as LayoutAnchorable;
+                if (anchorable != null)
+                {
+                    DockHelper.RootAnchorablePane.Children.Remove(anchorable);
+                    DefaultRegistry.UnregisterAnchorable(anchorable);
+
+                    var view = anchorable.Content as IDashboardView;
+                    if (view != null)
+                    {
+                        ModuleRegistry.DefaultRegistry.UnregisterModule(view);
+                    }
+                    args.Cancel = true;
+                }
+            };
 
             _Anchorables.Add(newAnchorable.Title, newAnchorable);
         }
@@ -38,7 +56,7 @@ namespace FarsightDash
             return _Anchorables.ContainsKey(anchorableName);
         }
 
-        public void UnregisterModule(LayoutAnchorable newModule)
+        public void UnregisterAnchorable(LayoutAnchorable newModule)
         {
             if (!_Anchorables.ContainsKey(newModule.Title))
             {

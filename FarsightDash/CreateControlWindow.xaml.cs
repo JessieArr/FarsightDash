@@ -1,7 +1,9 @@
 ﻿using System.Windows;
 using System.Windows.Forms;
 using FarsightDash.BaseModules;
+using FarsightDash.BaseModules.Miscellaneous.PopUp;
 using FarsightDash.Common.Interfaces;
+using MessageBox = System.Windows.Forms.MessageBox;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 using UserControl = System.Windows.Controls.UserControl;
 
@@ -26,6 +28,11 @@ namespace FarsightDash
         {        
             if (_CurrentModuleSetupView.IsEnteredUserDataValid())
             {
+                if (ModuleRegistry.DefaultRegistry.IsModuleRegistered(ControlName.Text))
+                {
+                    MessageBox.Show("A module with that name is already declared. Module names must be unique.", "Duplicate Module");
+                    return;
+                }
                 var modules = _CurrentModuleSetupView.CreateModules(null);
                 // TODO: Handle more than one returned module here!
                 var firstModule = modules[0];

@@ -70,6 +70,7 @@ namespace FarsightDash
         private void SaveMenuItemClicked(object sender, RoutedEventArgs e)
         {
             _SaveFileHelper.Autosave();
+            SaveLayoutHelper.SaveLayout(dockingManager);
         }
 
         private void ManageControlsClicked(object sender, RoutedEventArgs e)

@@ -37,6 +37,11 @@ namespace FarsightDash
             return _Modules[moduleName];
         }
 
+        internal bool IsModuleRegistered(string moduleName)
+        {
+            return _Modules.ContainsKey(moduleName);
+        }
+
         public void UnregisterModule(IFarsightDashModule newModule)
         {
             if (!_Modules.ContainsKey(newModule.ModuleName))
