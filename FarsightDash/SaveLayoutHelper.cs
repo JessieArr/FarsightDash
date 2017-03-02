@@ -28,33 +28,19 @@ namespace FarsightDash
 
         public static void LoadLayout(DockingManager dockingManager)
         {
-            var saveFilehelper = new SaveFileHelper();
             var serializer = new XmlLayoutSerializer(dockingManager);
             serializer.LayoutSerializationCallback += (s, eventArgs) =>
             {
-                var o = eventArgs.Model as LayoutAnchorable;
+                var anchorable = eventArgs.Model as LayoutAnchorable;
                 
-                if(o == null)
+                if(anchorable == null)
                 {
                     return;
                 }
-                var savedModule = saveFilehelper.GetSavedModuleFromFile(o.Title);
-                if(savedModule != null)
-                {
-                    ModuleRegistry.DefaultRegistry.RegisterModule(savedModule);
-                    var view = savedModule as IDashboardView;
-                    if (view != null)
-                    {
-                        //o.Content = view.Control;
-                        eventArgs.Content = view.Control;
-                        o.Hiding += (obj, args) =>
-                        {
-                            ModuleRegistry.DefaultRegistry.UnregisterModule(view);
-                        };
-                    }
-                }
-                
-                o.Show();
+
+                AnchorableRegistry.DefaultRegistry.RegisterAnchorable(anchorable);
+
+                anchorable.Show();
             };
             serializer.Deserialize(layoutFileName);
         }

@@ -42,10 +42,10 @@ namespace FarsightDash
             DockHelper.RootAnchorablePane = cast;
 
             _SaveFileHelper = new SaveFileHelper();
-            //if (File.Exists("Autosave.json"))
-            //{
-            //    _SaveFileHelper.LoadSavedModulesFromFile("Autosave.json");
-            //}
+            if (File.Exists("Autosave.json"))
+            {
+                _SaveFileHelper.LoadSavedModulesFromFile("Autosave.json");
+            }
         }
 
         private void ExitMenuItemClicked(object sender, RoutedEventArgs e)
