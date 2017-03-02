@@ -39,8 +39,16 @@ namespace FarsightDash
 
                 if (module is IDashboardView)
                 {
-                    var newControl = anchorableService.GetAnchorableFromView((IDashboardView) module);
-                    DockHelper.RootAnchorablePane.Children.Add(newControl);
+                    if (AnchorableRegistry.DefaultRegistry.IsAnchorableRegistered(module.ModuleName))
+                    {
+                        var anchorable = AnchorableRegistry.DefaultRegistry.GetRegisteredAnchorable(module.ModuleName);
+                        var view = module as IDashboardView;
+                        anchorable.Content = view.Control;
+                        anchorable.Hiding += (obj, args) =>
+                        {
+                            ModuleRegistry.DefaultRegistry.UnregisterModule(view);
+                        };
+                    }
                 }
             }
 
@@ -59,6 +67,12 @@ namespace FarsightDash
                     FarsightLogger.DefaultLogger.LogWarning($"Failed to establish consumer relationship between {relationship.EmitterModuleName} and {relationship.ConsumingModuleName}");
                 }
             }
+        }
+
+        public ISavableModule GetSavedModuleFromFile(string moduleName)
+        {
+            var savedModules = GetSavedModulesFromFileJson("Autosave.json");
+            return savedModules.FirstOrDefault(x => x.ModuleName == moduleName);
         }
 
         public List<ISavableModule> GetSavedModulesFromFileJson(string fileName)
