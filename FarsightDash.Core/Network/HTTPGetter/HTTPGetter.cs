@@ -56,26 +56,33 @@ namespace FarsightDash.BaseModules.Network.HTTPGetter
         {
             var returnText = "";
 
-            var response = _WebHelper.GetResponseFromURL(_URL);
+            try
+            {
+                var response = _WebHelper.GetResponseFromURL(_URL);
 
-            if (_IncludeURL)
-            {
-                returnText += response.RedirectedURL + Environment.NewLine;
-            }
-            if (_IncludeStatus)
-            {
-                returnText += response.Status + Environment.NewLine;
-            }
-            if (_IncludeHeaders)
-            {
-                returnText += response.Headers + Environment.NewLine;
-            }
-            if (_IncludeBody)
-            {
-                returnText += response.Body;
-            }
+                if (_IncludeURL)
+                {
+                    returnText += response.RedirectedURL + Environment.NewLine;
+                }
+                if (_IncludeStatus)
+                {
+                    returnText += response.Status + Environment.NewLine;
+                }
+                if (_IncludeHeaders)
+                {
+                    returnText += response.Headers + Environment.NewLine;
+                }
+                if (_IncludeBody)
+                {
+                    returnText += response.Body;
+                }
 
-            return returnText;
+                return returnText;
+            }catch (Exception ex)
+            {
+                FarsightLogger.DefaultLogger.LogError($"{ex.Message}{Environment.NewLine}{ex.StackTrace}");
+                return ex.Message;
+            }            
         }
 
         private void EmitFreshData()
